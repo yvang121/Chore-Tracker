@@ -1,0 +1,10 @@
+a {
+	font-size: 24;
+	font-family: Cambria;
+	text-align: left;
+	color: green;
+}
+
+ul {
+	list-style: square;
+}
