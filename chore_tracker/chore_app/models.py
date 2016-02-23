@@ -5,7 +5,11 @@ from django.db import models
 from django.utils import timezone
 from django.forms import fields
 
-# Create your models here.
+'''Our models include a Housemate entity, which has a dependent entity
+of chores. A chore entity cannot exist independent of a housemate.
+A chore entity will always be assigned to a housemate entity.
+'''
+
 class Housemate(models.Model):
 	'''Housemate independent entity.'''
 	person = models.Manager()
@@ -18,7 +22,6 @@ class Housemate(models.Model):
 		return '%s %s' % (self.first_name, self.last_name)
 
 	full_name = property(__str__)
-
 
 class Chore(models.Model):
 	'''Chore dependent entity that is linked to a Housemate entity.'''
