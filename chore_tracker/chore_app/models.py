@@ -15,6 +15,7 @@ class Housemate(models.Model):
 	person = models.Manager()
 	first_name = models.CharField('First name', max_length = 40)
 	last_name = models.CharField('Last name', max_length = 40)
+	email = models.EmailField(max_length = 200, default = '')
 
 	def __str__(self):
 		'''Used for administrators to turn a housemate object to a string
