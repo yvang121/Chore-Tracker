@@ -1,0 +1,36 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'chore_app/css/bootstrap.min.css' %}"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="{% static 'chore_app/style.css' %}"/>
+<link rel="icon" type="image/png" sizes="16x16" href="{% static 'chore_app/images/chore_tracker_16x16.png' %}">
+
+
+<title>Housemate</title>
+<body>
+	<nav class="navbar navbar-inverse navbar-static-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#" class="navbar-brand" text-align="left">Chore Tracker</a>
+				<button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+		</div>
+	</nav>
+	<h1>Housemates of John Doe's house:</h1>
+	{% if alphabetical_order %}
+		<!-- If names exist in database, list them out in for loop -->
+	    <ul>
+	    {% for housemate in alphabetical_order %}
+	        <li><a href="{% url 'chore_app:detail' housemate.id %}">{{ housemate.full_name }}</a></li>
+	    {% endfor %}
+	    </ul>
+	{% else %}
+		<!-- print statement displaying no names available -->
+	    <p>No names are available.</p>
+{% endif %}
+
+</body>
