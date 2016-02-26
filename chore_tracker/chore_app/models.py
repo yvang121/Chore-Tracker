@@ -13,8 +13,8 @@ A chore entity will always be assigned to a housemate entity.
 class Housemate(models.Model):
 	'''Housemate independent entity.'''
 	person = models.Manager()
-	first_name = models.CharField('First name', max_length = 40)
-	last_name = models.CharField('Last name', max_length = 40)
+	first_name = models.CharField(max_length = 40)
+	last_name = models.CharField(max_length = 40)
 	email = models.EmailField(max_length = 200, default = '')
 
 	def __str__(self):
@@ -26,7 +26,8 @@ class Housemate(models.Model):
 
 class Chore(models.Model):
 	'''Chore dependent entity that is linked to a Housemate entity.'''
-	assigned_to = models.ForeignKey(Housemate, on_delete = models.CASCADE)
+	assigned_to = models.ForeignKey(Housemate, on_delete = models.CASCADE,
+		verbose_name = 'housemate responsible for completing this chore')
 	chore_title = models.CharField(max_length = 200)
 	create_date = timezone.now()
 	due_date = models.DateTimeField(default = '')
