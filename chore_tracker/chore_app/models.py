@@ -24,6 +24,7 @@ class Housemate(models.Model):
 
 	full_name = property(__str__)
 
+
 class Chore(models.Model):
 	'''Chore dependent entity that is linked to a Housemate entity.'''
 	assigned_to = models.ForeignKey(Housemate, on_delete = models.CASCADE,
