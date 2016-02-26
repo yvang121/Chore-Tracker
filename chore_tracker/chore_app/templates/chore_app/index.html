@@ -20,8 +20,8 @@
 			</div>
 		</div>
 	</nav>
-	<h1>Housemates of John Doe's house:</h1>
 	{% if alphabetical_order %}
+	<h1>Housemates:</h1>
 		<!-- If names exist in database, list them out in for loop -->
 	    <ul>
 	    {% for housemate in alphabetical_order %}
