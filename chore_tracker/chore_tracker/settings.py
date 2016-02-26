@@ -56,7 +56,7 @@ ROOT_URLCONF = 'chore_tracker.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['chore_app/templates/chore_app'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
