@@ -27,4 +27,7 @@ def detail(request, housemate_id):
 
 def addChore(request, housemate_id):
 	housemate = get_object_or_404(Housemate, pk = housemate_id)
-	return render(request, 'chore_app/addChore.html', {'housemate':housemate})
+	return render(request, 'chore_app/addChore.html', {'housemate': housemate})
+
+def addHousemate(request):
+	return render(request, 'chore_app/addHousemate.html')
