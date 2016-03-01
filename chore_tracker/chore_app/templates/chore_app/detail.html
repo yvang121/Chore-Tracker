@@ -19,7 +19,7 @@
 				</div>
 			</div>
 		</nav>
-		<!-- <div> -->
+		<div>
 			<h1>{{housemate.full_name }}{{chore.chore_title}}</h1>
 				<div class="relative">
 					<ul>
@@ -30,6 +30,8 @@
 					{% endfor %}
 					</ul>
 				</div>
-			<a href="{% url 'chore_app:addChore' housemate.id %}" class="btn btn-primary" role="button">Add Chore</a></button>
-		<!-- </div> -->
+			<div class="button">
+				<a href="{% url 'chore_app:addChore' housemate.id %}" class="btn btn-primary" role="button">Add Chore</a></button>
+			</div>
+		</div>
 	</body>

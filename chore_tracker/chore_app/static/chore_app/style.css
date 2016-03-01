@@ -8,3 +8,9 @@ a {
 ul {
 	list-style: square;
 }
+
+div.button {
+	position: fixed;
+	right: 3;
+	top: 55;
+}
