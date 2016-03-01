@@ -19,16 +19,23 @@
 				</div>
 			</div>
 		</nav>
-		<div>
+		<div class="text">
 			<h1>{{housemate.full_name }}{{chore.chore_title}}</h1>
-				<div class="relative">
-					<ul>
+				<div class="chore">
 					{% for chore in housemate.chore_set.all %}
 					<!-- For all of the chores in the chore set, 
 						display the ones assigned to housemate.first_name -->
-					    <li>{{ chore.chore_title }} -- Due: {{chore.due_date}}</li>
+						<table padding="10" class="table table-hover">
+							<tr>
+								<th class="info">Chore Title</th>
+								<th class="info">Due Date</th>
+							</tr>
+							<tr>
+								<td> {{ chore.chore_title}} </td>
+								<td> {{ chore.due_date }} </td>
+							</tr>
+						</table>
 					{% endfor %}
-					</ul>
 				</div>
 			<div class="button">
 				<a href="{% url 'chore_app:addChore' housemate.id %}" class="btn btn-primary" role="button">Add Chore</a></button>

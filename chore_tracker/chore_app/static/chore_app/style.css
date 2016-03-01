@@ -9,8 +9,31 @@ ul {
 	list-style: square;
 }
 
+table, tr, th, td {
+	text-align: center;
+	padding: 5;
+	border: 2px solid #00004d;
+}
+
+th, td {
+	font-family: Calibri, Candara, Segoe, 'Sego UI', Optima;
+	font-style: normal;
+}
+
 div.button {
 	position: fixed;
 	right: 3;
 	top: 55;
+}
+
+div.chore {
+    position: absolute;
+    top: 50;
+	left: 20;
+}
+
+div.text {
+	position: relative;
+	top:15;
+	left: 20;
 }
