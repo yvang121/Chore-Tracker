@@ -1,8 +1,16 @@
+body {
+	width: 100%;
+	margin: 0;
+}
+
 a {
-	font-size: 24;
+	font-size: 18;
 	font-family: Cambria;
 	text-align: left;
-	color: green;
+}
+
+a.hover {
+	text-decoration: none;
 }
 
 ul {
@@ -10,9 +18,13 @@ ul {
 }
 
 table, tr, th, td {
-	text-align: center;
-	padding: 5;
-	border: 2px solid #00004d;
+	position: static;
+	text-align: left;
+	/*border: 2px solid #00004d;*/
+}
+
+table {
+	margin: 0;
 }
 
 th, td {
@@ -27,13 +39,7 @@ div.button {
 }
 
 div.chore {
-    position: absolute;
+    position: relative;
     top: 50;
-	left: 20;
-}
-
-div.text {
-	position: relative;
-	top:15;
 	left: 20;
 }
