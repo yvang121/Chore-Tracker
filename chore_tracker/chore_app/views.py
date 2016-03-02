@@ -18,7 +18,7 @@ class IndexView(generic.ListView):
 	context_object_name = 'alphabetical_order'
 	
 	def get_queryset(self):
-		'''Return the most recent top 5 chores.'''
+		'''Return the most recent by last name'''
 		return Housemate.person.order_by('last_name')
 
 def detail(request, housemate_id):
