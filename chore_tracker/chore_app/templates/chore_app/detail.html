@@ -45,13 +45,15 @@
 								<th class="info">Chore Title</th>
 								<th class="info">Due Date</th>
 							</tr>
-						{% for chore in housemate.chore_set.all %}
-							<tr>
-								<td> {{ chore.chore_title}} </td>
-								<td> {{ chore.due_date }} </td>
-							</tr>
+							{% for chore in housemate.chore_set.all %}
+							{% cycle '' '<tr>' '' '' %}
+
+									<td> {{ chore.chore_title}} </td>
+									<td> {{ chore.due_date }} </td>
+
+							{% cycle '' '' '' '</tr>' '' %}
+							{% endfor %}
 						</table>
-					{% endfor %}
 				</div>
 			<div class="button">
 				<a href="{% url 'chore_app:addChore' housemate.id %}" class="btn btn-primary" role="button">Add Chore</a></button>
