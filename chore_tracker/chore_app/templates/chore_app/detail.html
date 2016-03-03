@@ -46,12 +46,10 @@
 								<th class="info">Due Date</th>
 							</tr>
 							{% for chore in housemate.chore_set.all %}
-							{% cycle '' '<tr>' '' '' %}
-
-									<td> {{ chore.chore_title}} </td>
-									<td> {{ chore.due_date }} </td>
-
-							{% cycle '' '' '' '</tr>' '' %}
+							{% cycle '<tr>' '' %}
+								<td> {{ chore.chore_title}} </td>
+								<td> {{ chore.due_date }} </td>
+							{% cycle '</tr>' ''%}
 							{% endfor %}
 						</table>
 				</div>
