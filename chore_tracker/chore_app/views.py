@@ -4,6 +4,7 @@ from django.core.urlresolvers import reverse
 from django.views import generic
 from django.utils import timezone
 
+from .forms import ChoreForm, HousemateForm
 from .models import Housemate, Chore
 
 class IndexView(generic.ListView):
@@ -27,7 +28,16 @@ def detail(request, housemate_id):
 
 def addChore(request, housemate_id):
 	housemate = get_object_or_404(Housemate, pk = housemate_id)
-	return render(request, 'chore_app/addChore.html', {'housemate': housemate})
+	form = ChoreForm(request.POST or None)
+	context = {
+    "form": form,
+    }
+	return render(request, 'chore_app/addChore.html', context)
+	#{'housemate': housemate}
 
 def addHousemate(request):
-	return render(request, 'chore_app/addHousemate.html')
+	form = HousemateForm(request.POST or None)
+	context = {
+    "form": form,
+    }
+	return render(request, 'chore_app/addHousemate.html', context)

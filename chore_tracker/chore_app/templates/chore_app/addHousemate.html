@@ -20,4 +20,14 @@
 			</div>
 		</div>
 	</nav>
+	<hi style="position: relative; left: 10px; width: 400; font-size: 25; color: green">Add Housemate</hi> 
+
+	<form method='POST' action='' style="position: relative;left: 10px">{% csrf_token %}		
+	{{ form.as_p }}
+	<form>
+	<input style="position: relative; left: 30px;" type='submit' class = "btn btn-info pull-left" value='Add Housemate'/>
+
+	<div class="button">
+		<a href="{% url 'chore_app:index' %}" class="btn btn-info pull-left" role="button">Cancel</a></button>
+	</div>
 </body>
