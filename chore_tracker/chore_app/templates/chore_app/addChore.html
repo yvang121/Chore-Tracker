@@ -22,13 +22,13 @@
 	</nav>
 
 	<hi style="position: relative; left: 10px; width: 400; font-size: 25; color: green">Add Chore</hi> 
-	<form method='POST' action='' style="position: relative;left: 10px">{% csrf_token %}	
+	<form method='POST' action='' style="position: relative;left: 10px">{% csrf_token %}
 	{{ form.as_p }}
-	<form>
-	<input style="position: relative; left: 30px" type='submit' class = "btn btn-info pull-left" value='Add Chore'/>
+	<input style="position: fixed; left: 30px; bottom: 30px;" type='submit' class = "btn btn-info pull-left" value='Add Chore'/>	
+	</form>
 
 	<div class="button">
-		<a href="{% url 'chore_app:index' %}" class="btn btn-info pull-left" role="button">Cancel</a></button>
+		<a href="{% url 'chore_app:detail' housemate.id %}" class="btn btn-info pull-left" role="button">Cancel</a>
 	</div>
 
 </body>
