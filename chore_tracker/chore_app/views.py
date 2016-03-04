@@ -29,14 +29,30 @@ def detail(request, housemate_id):
 def addChore(request, housemate_id):
 	housemate = get_object_or_404(Housemate, pk = housemate_id)
 	form = ChoreForm(request.POST or None)
+	if request.method == 'POST':
+		form = ChoreForm(request.POST)
+		if form.is_valid():
+			assigned_to = Housemate.person.get(pk=housemate_id)
+			chore_title = form.cleaned_data['chore_title']
+			due_date = form.cleaned_data['due_date']
+			post = Chore.chore_manager.create(chore_title=chore_title, due_date=due_date, assigned_to=assigned_to)
+			return HttpResponseRedirect(reverse('chore_app:detail', args=[housemate_id]))
 	context = {
-    "form": form,
+    'form': form,
+    'housemate': housemate,
     }
 	return render(request, 'chore_app/addChore.html', context)
-	#{'housemate': housemate}
 
 def addHousemate(request):
 	form = HousemateForm(request.POST or None)
+	if request.method == 'POST':
+		form = HousemateForm(request.POST)
+		if form.is_valid():
+			first_name = form.cleaned_data['first_name']
+			last_name = form.cleaned_data['last_name']
+			email = form.cleaned_data['email']
+			post = Housemate.person.create(first_name=first_name, last_name=last_name, email=email)
+			return HttpResponseRedirect('/chore_app/')
 	context = {
     "form": form,
     }
