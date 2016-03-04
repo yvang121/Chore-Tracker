@@ -10,6 +10,12 @@
 <script src="js/bootstrap.js"></script>
 </head>
 
+<style>
+body {
+	background-image: url("{% static 'chore_app/images/housemate.jpg' %}");
+}
+</style>
+
 <title>Home</title>
 <body>
 	<nav class="navbar navbar-inverse navbar-static-top">
@@ -53,6 +59,6 @@
 	    <p>No names are available.</p>
 {% endif %}
 	<div class="button">
-		<a href="{% url 'chore_app:addHousemate' %}" class="btn btn-primary" role="button">Add Housemate</a></button>
+		<a href="{% url 'chore_app:addHousemate' %}" class="btn btn-primary" role="button">Add Housemate</a>
 	</div>
 </body>
