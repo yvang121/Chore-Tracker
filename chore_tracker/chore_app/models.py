@@ -29,6 +29,7 @@ class Chore(models.Model):
 	'''Chore dependent entity that is linked to a Housemate entity.'''
 	assigned_to = models.ForeignKey(Housemate, on_delete = models.CASCADE,
 		verbose_name = 'housemate responsible for completing this chore')
+	chore_manager = models.Manager()
 	chore_title = models.CharField(max_length = 200)
 	create_date = timezone.now()
 	due_date = models.DateTimeField(default = '')
