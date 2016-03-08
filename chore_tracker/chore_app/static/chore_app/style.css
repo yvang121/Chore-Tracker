@@ -20,7 +20,6 @@ ul {
 table, tr, th, td {
 	position: static;
 	text-align: left;
-	/*border: 2px solid #00004d;*/
 }
 
 table {
