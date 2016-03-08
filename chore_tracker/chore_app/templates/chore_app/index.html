@@ -10,18 +10,15 @@
 <script src="js/bootstrap.js"></script>
 </head>
 
-<<<<<<< Updated upstream
 <style>
 body {
-	/*background-image: url("{% static 'chore_app/images/housemate.jpg' %}");*/
+	/*background-image: url("{% static 'chore_app/images/.jpg' %}");*/
 }
 </style>
-=======
-
->>>>>>> Stashed changes
 
 <title>Home</title>
 <body>
+	<!-- Black navbar header -->
 	<nav class="navbar navbar-inverse navbar-static-top">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="{% url 'chore_app:index' %}">Chore Tracker</a>
@@ -32,6 +29,7 @@ body {
 			</button>
 			<div class="collapse navbar-collapse navHeaderCollapse">
 				<ul class="nav navbar-nav navbar-right">
+					<!-- Settings dropdown menu -->
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings<b class="caret"></b></a>
 						<ul class="dropdown-menu">
@@ -44,6 +42,7 @@ body {
 			</div>
 		</div>
 	</nav>
+	<!-- List all of the names in the household of housemates -->
 	{% if alphabetical_order %}
 	<div style="position: relative; left:15; width: 400; bottom: 10">
 		<h1>Housemates:</h1>
