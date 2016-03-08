@@ -23,10 +23,13 @@ class IndexView(generic.ListView):
 		return Housemate.person.order_by('last_name')
 
 def detail(request, housemate_id):
+	'''Renders an HTML page to view the details for a housemate given a
+	housemate ID'''
 	housemate = get_object_or_404(Housemate, pk = housemate_id)
 	return render(request, 'chore_app/detail.html', {'housemate': housemate})
 
 def addChore(request, housemate_id):
+	'''Creates a chore data instance for a given housemate id'''
 	housemate = get_object_or_404(Housemate, pk = housemate_id)
 	form = ChoreForm(request.POST or None)
 	if request.method == 'POST':
@@ -44,6 +47,7 @@ def addChore(request, housemate_id):
 	return render(request, 'chore_app/addChore.html', context)
 
 def addHousemate(request):
+	'''Creates a housemate instance'''
 	form = HousemateForm(request.POST or None)
 	if request.method == 'POST':
 		form = HousemateForm(request.POST)
