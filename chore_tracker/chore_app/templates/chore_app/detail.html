@@ -42,11 +42,13 @@
 						display the ones assigned to housemate.first_name -->
 						<table class="table table-hover">
 							<tr>
+								<th class="info">Status</th>
 								<th class="info">Chore Title</th>
 								<th class="info">Due Date</th>
 							</tr>
 							{% for chore in housemate.chore_set.all %}
 							{% cycle '<tr>' '' %}
+								<td>  <input type="checkbox" style="position: relative; left: 10px;">  </td>
 								<td> {{ chore.chore_title}} </td>
 								<td> {{ chore.due_date }} </td>
 							{% cycle '</tr>' ''%}
