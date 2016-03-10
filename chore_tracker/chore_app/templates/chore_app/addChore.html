@@ -23,8 +23,8 @@
 
 	<hi style="position: relative; left: 10px; width: 400; font-size: 25; color: green">Add Chore</hi> 
 	<form method='POST' action='' style="position: relative;left: 10px">{% csrf_token %}
-	{{ form.as_p }}
-	<input style="position: fixed; left: 30px; bottom: 30px;" type='submit' class = "btn btn-info pull-left" value='Add Chore'/>	
+		{{ form.as_p }}
+		<input style="position: fixed; left: 30px;" type='submit' class = "btn btn-info pull-left" value='Add Chore'/>	
 	</form>
 
 	<div class="button">
