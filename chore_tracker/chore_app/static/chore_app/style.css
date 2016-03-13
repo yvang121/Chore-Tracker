@@ -5,7 +5,7 @@ body {
 
 a {
 	font-size: 18;
-	font-family: Cambria;
+	font-family: inherit;
 	text-align: left;
 }
 
@@ -27,8 +27,31 @@ table {
 }
 
 th, td {
-	font-family: Calibri, Candara, Segoe, 'Sego UI', Optima;
+	font-family: inherit, Calibri, Candara, Segoe, 'Sego UI', Optima;
 	font-style: normal;
+}
+
+input {
+  padding: 5px;
+  border: solid 1px #dcdcdc;
+  transition: box-shadow 0.3s, border 0.3s;
+  font-family: inherit;
+
+  /* Pencil look */
+/*  padding: 5px;
+  border: none;
+  border-bottom: solid 1px #c9c9c9;
+  transition: border 0.3s;*/
+
+}
+
+input[type='submit'] {
+    padding:5px 15px; 
+    background:#52527a; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
 }
 
 div.button {
@@ -37,8 +60,16 @@ div.button {
 	top: 55;
 }
 
-div.chore {
-    position: relative;
-    top: 50;
-	left: 20;
+div.cancel {
+	position: absolute;
+	padding:5px 15px;
+	left: 190;
+}
+
+div.add {
+	position: relative;
+	left: 15;
+	bottom: 10;
+	width: 400;
+	font-size: 32;
 }
