@@ -37,3 +37,6 @@ class Chore(models.Model):
 
 	def __str__(self):
 		return self.chore_title
+
+	class Meta:
+		ordering = ['due_date']
