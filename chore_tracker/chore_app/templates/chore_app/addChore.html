@@ -8,7 +8,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="js/bootstrap.js"></script>
-</head>
+{{ form.media }}
+<head>
+
 
 <title>New Chore</title>
 <body>
@@ -39,7 +41,8 @@
 	<div class="add">
 		<h1>Add Chore</h1>
 	</div> 
-	<form method='POST' action='' style="position: relative;left: 10px">{% csrf_token %}
+	<form method='POST' action='' style="position: relative; padding-left: 10px; padding-right: 10px">
+		{% csrf_token %}
 		{{ form.as_p }}
 		<input style="position: relative; top: 5;" type='submit' class = "btn btn-success pull-left" value='Add Chore'/>
 		<div class="cancel">

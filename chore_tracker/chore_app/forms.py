@@ -1,5 +1,7 @@
 from django import forms
+from datetimewidget.widgets import DateTimeWidget, DateWidget, TimeWidget
 import datetime
+
 from .models import Chore
 from .models import Housemate
 
@@ -10,8 +12,11 @@ class ChoreForm(forms.Form):
 		"chore_title",
 		"due_date",
 		]
+
 	chore_title = forms.CharField(max_length = 200)
-	due_date = forms.DateTimeField(initial = datetime.datetime.now())
+	due_date = forms.DateTimeField(widget=DateTimeWidget(bootstrap_version=3), initial = datetime.datetime.now, 
+		input_formats = ['%d/%m/%Y %H:%M'])
+
 
 class HousemateForm(forms.Form):
 	class Meta:
