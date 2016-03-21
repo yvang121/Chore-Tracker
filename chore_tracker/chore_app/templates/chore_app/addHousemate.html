@@ -37,9 +37,9 @@
 		</div>
 	</nav>
 	<h1 style="position: relative; left: 10px; width: 400; font-size: 25;">Add Housemate</h1> 
-	<form method='post' action='' style="position: relative;left: 10px">{% csrf_token %}		
+	<form method='post' action='' style="position: relative; left: 10px">{% csrf_token %}		
 		{{ form.as_p }}
-		<input style="position: relative;" type='submit' class = "btn btn-success pull-left" value='Add Housemate'/>
+		<input style="position: relative; top: 6.5" type='submit' class="btn btn-success pull-left" value='Add Housemate'/>
 		<div class="cancel">
 			<a href="{% url 'chore_app:index' %}" class="btn btn-danger" role="button">Cancel</a></button>
 		</div>
