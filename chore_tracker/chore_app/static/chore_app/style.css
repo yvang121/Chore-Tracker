@@ -9,10 +9,6 @@ a {
 	text-align: left;
 }
 
-a.hover {
-	text-decoration: none;
-}
-
 ul {
 	list-style: square;
 }
@@ -72,4 +68,13 @@ div.add {
 	bottom: 10;
 	width: 400;
 	font-size: 32;
+}
+
+.edit-info {
+	position: relative; 
+	background-color: #5bc0de;
+	height: 22px; 
+	text-align: center; 
+	bottom: 3;
+	line-height: 0.5em;
 }
