@@ -64,6 +64,5 @@ def addHousemate(request):
 
 def delete(request, housemate_id, chore_title):
 	housemate = get_object_or_404(Housemate, pk = housemate_id)
-	instance = housemate.chore_set.filter(chore_title=chore_title)
-	instance.delete()
+	instance = housemate.chore_set.filter(chore_title=chore_title).delete()
 	return HttpResponseRedirect(reverse('chore_app:detail', args=[housemate_id]))
