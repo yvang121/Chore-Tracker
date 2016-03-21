@@ -54,7 +54,7 @@
 								<td><input type="checkbox" style="position: relative; left: 10px;" value= '{{ chore }}' ></td>
 								<td> {{ chore.chore_title}} </td>
 								<td> {{ chore.due_date }} </td>
-								<td style="text-align: center;"><a href="{% url 'chore_app:delete' housemate.id chore.chore_title %}" class="btn btn-danger" role="button">Delete</a></td>
+								<td style="text-align: center;"><a href="{% url 'chore_app:delete' housemate.id chore.id %}" class="btn btn-danger" role="button">Delete</a></td>
 							{% cycle '</tr>' ''%}
 							{% endfor %}
 						</table>
