@@ -62,7 +62,7 @@ def addHousemate(request):
     }
 	return render(request, 'chore_app/addHousemate.html', context)
 
-def delete(request, housemate_id, chore_title):
+def delete(request, housemate_id, chore_id):
 	housemate = get_object_or_404(Housemate, pk = housemate_id)
-	instance = housemate.chore_set.filter(chore_title=chore_title).delete()
+	instance = housemate.chore_set.filter(pk=chore_id).delete()
 	return HttpResponseRedirect(reverse('chore_app:detail', args=[housemate_id]))
