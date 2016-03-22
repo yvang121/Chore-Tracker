@@ -51,7 +51,11 @@
 							</tr>
 							{% for chore in housemate.chore_set.all %}
 							{% cycle '<tr>' '' %}
-								<td><input type="checkbox" style="position: relative; left: 10px;" value= '{{ chore }}' ></td>
+								{% if chore.is_done %}
+									<td><input type="checkbox" style="position: relative; left: 10px;" value= '{{ chore }}' checked /></td>
+								{% else %}
+									<td><input type="checkbox" style="position: relative; left: 10px;" value= '{{ chore }}'/></td>
+								{% endif %}
 								<td> {{ chore.chore_title}} </td>
 								<td> {{ chore.due_date }} </td>
 								<td style="text-align: center;"><a href="{% url 'chore_app:delete' housemate.id chore.id %}" class="btn btn-danger" role="button">Delete</a></td>
