@@ -69,16 +69,13 @@ def delete(request, housemate_id, chore_id):
 
 def editInfo(request, housemate_id):
 	housemate = get_object_or_404(Housemate, pk=housemate_id)
-	form = HousemateForm(request.POST or None)
 	if request.method == 'POST':
-		form = HousemateForm(request.POST)
-		if form.is_valid():
-			first_name = form.cleaned_data['first_name']
-			last_name = form.cleaned_data['last_name']
-			email = form.cleaned_data['email']
-			housemate.save()
-			return HttpResponseRedirect('/chore_app')
-	context = {
-	"form": form,
-	}
-	return render(request, 'chore_app/editInfo.html', {'housemate': housemate})
+		if 'first_name' in request.POST:
+			housemate.first_name = request.POST['first_name']
+		if 'last_name' in request.POST:
+			housemate.last_name = request.POST['last_name']
+		if 'email' in request.POST:
+			housemate.email = request.POST['email']
+		housemate.save()
+		return HttpResponseRedirect('/chore_app/')
+	return render(request, 'chore_app/editInfo.html')
