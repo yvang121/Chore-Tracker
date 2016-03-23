@@ -39,12 +39,12 @@
 	<h1 style="position: relative; left: 10px; width: 400; font-size: 25;">Edit Housemate</h1> 
 	<form method='POST' action='' style="position: relative;left: 10px">
 		{% csrf_token %}
-		<label>First name</label> 
-		<input type='text' name='first_name'/>
-		<label>Last name</label>
-		<input type='text' name='Last name'/>
-		<label>Email</label>
-		<input type='text' name='Email'/></br>
+		<label>First name</label></br> 
+		<input type='text' name='first_name' default='None'/></br>
+		<label>Last name</label></br>
+		<input type='text' name='last_name'/></br>
+		<label>Email</label></br>
+		<input type='text' name='email'/></br>
 
 		<input style="position: relative;" type='submit' class = "btn btn-success pull-left" value='Save'/>
 		<div class="cancel">
