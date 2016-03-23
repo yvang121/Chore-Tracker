@@ -70,11 +70,11 @@ def delete(request, housemate_id, chore_id):
 def editInfo(request, housemate_id):
 	housemate = get_object_or_404(Housemate, pk=housemate_id)
 	if request.method == 'POST':
-		if 'first_name' in request.POST:
+		if 'first_name' in request.POST and request.POST['first_name'] != '':
 			housemate.first_name = request.POST['first_name']
-		if 'last_name' in request.POST:
+		if 'last_name' in request.POST and request.POST['last_name'] != '':
 			housemate.last_name = request.POST['last_name']
-		if 'email' in request.POST:
+		if 'email' in request.POST and request.POST['email'] != '':
 			housemate.email = request.POST['email']
 		housemate.save()
 		return HttpResponseRedirect('/chore_app/')
