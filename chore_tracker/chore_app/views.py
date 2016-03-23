@@ -52,8 +52,8 @@ def addHousemate(request):
 	if request.method == 'POST':
 		form = HousemateForm(request.POST)
 		if form.is_valid():
-			first_name = form.cleaned_data['first_name']
-			last_name = form.cleaned_data['last_name']
+			first_name = form.cleaned_data['first_name'].capitalize()
+			last_name = form.cleaned_data['last_name'].capitalize()
 			email = form.cleaned_data['email']
 			post = Housemate.person.create(first_name=first_name, last_name=last_name, email=email)
 			return HttpResponseRedirect('/chore_app/')
@@ -62,7 +62,7 @@ def addHousemate(request):
     }
 	return render(request, 'chore_app/addHousemate.html', context)
 
-def delete(request, housemate_id, chore_id):
+def deleteChore(request, housemate_id, chore_id):
 	housemate = get_object_or_404(Housemate, pk=housemate_id)
 	instance = housemate.chore_set.filter(pk=chore_id).delete()
 	return HttpResponseRedirect(reverse('chore_app:detail', args=[housemate_id]))
@@ -79,3 +79,7 @@ def editInfo(request, housemate_id):
 		housemate.save()
 		return HttpResponseRedirect('/chore_app/')
 	return render(request, 'chore_app/editInfo.html')
+
+def deleteHousemate(request, housemate_id):
+	housemate = get_object_or_404(Housemate, pk=housemate_id).delete()
+	return HttpResponseRedirect('/chore_app/')
