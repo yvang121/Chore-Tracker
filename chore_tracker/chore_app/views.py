@@ -71,9 +71,9 @@ def editInfo(request, housemate_id):
 	housemate = get_object_or_404(Housemate, pk=housemate_id)
 	if request.method == 'POST':
 		if 'first_name' in request.POST and request.POST['first_name'] != '':
-			housemate.first_name = request.POST['first_name']
+			housemate.first_name = request.POST['first_name'].capitalize()
 		if 'last_name' in request.POST and request.POST['last_name'] != '':
-			housemate.last_name = request.POST['last_name']
+			housemate.last_name = request.POST['last_name'].capitalize()
 		if 'email' in request.POST and request.POST['email'] != '':
 			housemate.email = request.POST['email']
 		housemate.save()
