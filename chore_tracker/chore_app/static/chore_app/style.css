@@ -43,7 +43,7 @@ input {
 
 input[type='submit'] {
     padding:5px 15px; 
-    background:#52527a; 
+    /*background:#52527a; */
     border:0 none;
     cursor:pointer;
     -webkit-border-radius: 5px;
