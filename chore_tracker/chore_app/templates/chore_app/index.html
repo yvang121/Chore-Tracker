@@ -55,6 +55,7 @@ body {
 		        	<li>
 		        		<a style="font-size: 26; font-family: Cambria; color: green; text-decoration: none;" href="{% url 'chore_app:detail' housemate.id %}">{{ housemate.full_name }}</a>
 		        		<a href="{% url 'chore_app:editInfo' housemate.id %}" class="btn btn-info edit-info">Edit info</a>
+		        		<a href="{% url 'chore_app:deleteHousemate' housemate.id %}" class="btn btn-danger">Delete</a>
 		        	</li>
 		    	</div>
 		    {% endfor %}
