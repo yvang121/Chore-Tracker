@@ -52,13 +52,20 @@
 							{% for chore in housemate.chore_set.all %}
 							{% cycle '<tr>' '' %}
 								{% if chore.is_done %}
-									<td><input type="checkbox" style="position: relative; left: 10px;" value= '{{ chore }}' checked /></td>
+									<td>
+										<form method='POST' action=''>
+										{% csrf_token %}
+										<input type="checkbox" style="position: relative; left: 10px;" name='status' value='is_done' checked />
+										</form>
+									</td>
+									<td><strike> {{ chore.chore_title }} </strike></td>
+									<td><strike> {{ chore.due_date }} </strike></td>
 								{% else %}
-									<td><input type="checkbox" style="position: relative; left: 10px;" value= '{{ chore }}'/></td>
+									<td><input type="checkbox" style="position: relative; left: 10px;" name='status'/></td>
+									<td> {{ chore.chore_title}} </td>
+									<td> {{ chore.due_date }} </td>
 								{% endif %}
-								<td> {{ chore.chore_title}} </td>
-								<td> {{ chore.due_date }} </td>
-								<td style="text-align: center;"><a href="{% url 'chore_app:delete' housemate.id chore.id %}" class="btn btn-danger" role="button">Delete</a></td>
+								<td style="text-align: center;"><a href="{% url 'chore_app:deleteChore' housemate.id chore.id %}" class="btn btn-danger" role="button">Delete</a></td>
 							{% cycle '</tr>' ''%}
 							{% endfor %}
 						</table>
