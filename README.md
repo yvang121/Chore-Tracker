@@ -1,0 +1,1 @@
+Hello and welcome to the Chore Tracker web application repository!
