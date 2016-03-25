@@ -1,24 +1,20 @@
 # Chore-Tracker
-
 Hello and welcome to the Chore Tracker web application repository!
-
-<h2>Description:</h2>
+### Description:
 The Chore Tracker web application stores and keeps track of all the chores within a household
 that need to be done. Features include adding or removing housemates from a list of housemates,
 addition or deletion of chores for a housemate and editing housemate information (first names, last names, email).
-
-<h2>Features to come:</h2>
+### Features to come:
 <ul>
 	<li>Login page</li>
 	<li>Create username/password registration</li>
 	<li>Logout capabilities</li>
 	<li>`House` data model entity</li>
 </ul>
-
-<h2>Steps to install and use the Django API</h2>
+### Steps to install and use the Django API:
 Skip steps as needed if you know you've already completed them i.e. already have Python 2.7+ installed.
 <ol>
-	<li>Install Python 2.7+ <a href='https://www.python.org/downloads/'>here</a> (although we've been developing with Python version 3.4+) </li></br>
+	<li>Install Python 2.7+ <a href='https://www.python.org/downloads/'>here</a> (although we've been developing with Python version 3.4+) </li>
 	<li>Install Pip for an easier installation process <a href='https://bootstrap.pypa.io/get-pip.py'>here</a>. This is
 		a link to the script for pip that contains data for installation. Right click and select 'Save As' and place it somewhere. 
 		Make sure your environment variables allow python scripts to be callable from the command line. Depending on your Operating System,
