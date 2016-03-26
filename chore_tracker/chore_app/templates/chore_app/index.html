@@ -53,9 +53,9 @@ body {
 		    {% for housemate in alphabetical_order %}
 		    	<div>
 		        	<li>
-		        		<a style="font-size: 26; font-family: Cambria; color: green; text-decoration: none;" href="{% url 'chore_app:detail' housemate.id %}">{{ housemate.full_name }}</a>
-		        		<a href="{% url 'chore_app:editInfo' housemate.id %}" class="btn btn-info edit-info">Edit info</a>
-		        		<a href="{% url 'chore_app:deleteHousemate' housemate.id %}" class="btn btn-danger">Delete</a>
+		        		<a style="font-size: 26; font-family: Cambria; color: green; text-decoration: none; padding: 20px" href="{% url 'chore_app:detail' housemate.id %}">{{ housemate.full_name }}</a>
+		        		<a href="{% url 'chore_app:editInfo' housemate.id %}" class="btn btn-info"> <span class="glyphicon glyphicon-pencil"></span></a>
+		        		<a href="{% url 'chore_app:deleteHousemate' housemate.id %}" class="btn btn-danger"> <span class="glyphicon glyphicon-trash"></span></a>
 		        	</li>
 		    	</div>
 		    {% endfor %}
