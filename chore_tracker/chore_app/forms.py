@@ -5,6 +5,11 @@ import datetime
 from .models import Chore
 from .models import Housemate
 
+
+''' Chore form that allows users to add a chore by typing in a
+chore title and selecting a date and time. (All are currently required)  
+'''
+
 class ChoreForm(forms.Form):
 
 	class Meta:
@@ -15,14 +20,18 @@ class ChoreForm(forms.Form):
 		]
 
 	dateTimeOptions = {
-	'format': 'mm/dd/yyyy HH:ii P',
-	'showMeridian' : True
+	'format': 'mm/dd/yyyy HH:ii P',  #Formats date and time.  
+	'showMeridian' : True,   #Shows 12 hour time (AM and PM)
 	}
 
 	chore_title = forms.CharField(max_length = 200)
-	due_date = forms.DateTimeField(widget=DateTimeWidget(bootstrap_version=3, options=dateTimeOptions), initial = datetime.datetime.now, 
-		input_formats = ['%m/%d/%Y %I:%M %p'])
+	due_date = forms.DateTimeField(widget=DateTimeWidget(bootstrap_version=3, options=dateTimeOptions),
+		initial = datetime.datetime.now, input_formats = ['%m/%d/%Y %I:%M %p'])
+	
 
+''' Housemate form that allows users to add a housemate by typing in a first name, last
+name and email address.  (All are currently required)   
+'''
 
 class HousemateForm(forms.Form):
 	class Meta:
