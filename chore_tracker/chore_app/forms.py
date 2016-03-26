@@ -26,7 +26,7 @@ class ChoreForm(forms.Form):
 
 	chore_title = forms.CharField(max_length = 200)
 	due_date = forms.DateTimeField(widget=DateTimeWidget(bootstrap_version=3, options=dateTimeOptions),
-		initial = datetime.datetime.now, input_formats = ['%m/%d/%Y %I:%M %p'])
+		input_formats = ['%m/%d/%Y %I:%M %p'])
 	
 
 ''' Housemate form that allows users to add a housemate by typing in a first name, last
