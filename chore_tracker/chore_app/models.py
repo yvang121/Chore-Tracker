@@ -32,7 +32,7 @@ class Chore(models.Model):
 	chore_manager = models.Manager()
 	chore_title = models.CharField(max_length = 200)
 	create_date = timezone.now()
-	due_date = models.DateTimeField(default = '')
+	due_date = models.DateTimeField()
 	is_done = models.BooleanField('Status', default = False)
 
 	def __str__(self):
