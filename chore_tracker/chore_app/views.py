@@ -2,7 +2,10 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse, Http404
 from django.core.urlresolvers import reverse
 from django.views import generic
-from django.utils import timezone
+from django.utils import timezone 
+
+import datetime 
+from datetime import timedelta
 
 from .forms import ChoreForm, HousemateForm
 from .models import Housemate, Chore
@@ -26,7 +29,26 @@ def detail(request, housemate_id):
 	'''Renders an HTML page to view the details for a housemate given a
 	housemate ID'''
 	housemate = get_object_or_404(Housemate, pk = housemate_id)
-	return render(request, 'chore_app/detail.html', {'housemate': housemate})
+	today = datetime.datetime.date(datetime.datetime.now()) 
+	tomorrow = today + timedelta(1)
+	past = today - timedelta(1)
+	pastweek = today - timedelta(7)  #Overdue chores will be present for 1 week.
+	upcoming = tomorrow + timedelta(1)
+	nextyear = today + timedelta(365)  #Upcoming chores will be present for 1 year.
+	mintime = datetime.time.min
+	maxtime = datetime.time.max
+	current_time = datetime.datetime.time(datetime.datetime.now())
+	today_set = housemate.chore_set.filter(due_date__range=(datetime.datetime.combine(today, current_time), 
+		datetime.datetime.combine(today, maxtime)))
+	tomorrow_set = housemate.chore_set.filter(due_date__range=(datetime.datetime.combine(tomorrow, mintime), 
+		datetime.datetime.combine(tomorrow, maxtime)))
+	overdue_set = housemate.chore_set.filter(due_date__range=(datetime.datetime.combine(pastweek, mintime), 
+		datetime.datetime.combine(today, current_time)))
+	upcoming_set = housemate.chore_set.filter(due_date__range=(datetime.datetime.combine(tomorrow, maxtime), 
+		datetime.datetime.combine(nextyear, mintime)))
+	context = {'housemate': housemate, 'today_set': today_set, 'tomorrow_set': tomorrow_set, 
+	'overdue_set': overdue_set, 'upcoming_set': upcoming_set}
+	return render(request, 'chore_app/detail.html', context)
 
 def addChore(request, housemate_id):
 	'''Creates a chore data instance for a given housemate id'''
