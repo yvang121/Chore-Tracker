@@ -127,4 +127,4 @@ def editInfo(request, housemate_id):
 
 def deleteHousemate(request, housemate_id):
 	housemate = get_object_or_404(Housemate, pk=housemate_id).delete()
-	return HttpResponseRedirect('/chore_app/')
+	return HttpResponseRedirect('/chore_app/index')
