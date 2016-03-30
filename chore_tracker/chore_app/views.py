@@ -101,7 +101,7 @@ def addHousemate(request):
 			last_name = form.cleaned_data['last_name'].capitalize()
 			email = form.cleaned_data['email']
 			post = Housemate.person.create(first_name=first_name, last_name=last_name, email=email)
-			return HttpResponseRedirect('/chore_app/')
+			return HttpResponseRedirect('/chore_app/index/')
 	context = {
     "form": form,
     }
