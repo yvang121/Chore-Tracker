@@ -1,0 +1,35 @@
+{% load staticfiles %}
+<head>
+<link rel="stylesheet" type="text/css" href="{% static 'house/css/bootstrap.min.css' %}"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="{% static 'house/style.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'house/css.stylesheet.css' %}">
+<link rel="icon" type="image/png" sizes="16x16" href="{% static 'house/images/icon2.png' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="js/bootstrap.js"></script>
+</head>
+
+<title>House</title>
+<body>
+	<!-- List all of the names in the houses -->
+	{% if alphabetical_order %}
+	<div style="position: relative; left:15; width: 400; bottom: 10">
+		<h1>The Houses:</h1>
+	</div>
+		<!-- If names exist in database, list them out in for loop -->
+		<div>
+		    <ul>
+		    {% for house in alphabetical_order %}
+		    	<div>
+		    		<li>{{ house }}</li>
+		    	<div>
+		    {% endfor %}
+		    </ul>
+		</div>
+	{% else %}
+		<!-- print statement displaying no names available -->
+	    <p>No names are available.</p>
+	{% endif %}
+</body>
+

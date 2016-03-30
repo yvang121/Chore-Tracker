@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block navbar %}
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="../login/">Log in</a></li>
+    </ul>
+
+{% endblock %}
+
+{% block content %}
+<p>{% trans "Logged out" %}</p>
+{% endblock %}

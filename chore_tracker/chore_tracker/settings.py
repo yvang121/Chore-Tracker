@@ -32,13 +32,19 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'chore_app.apps.ChoreAppConfig',
+    'house.apps.HouseConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
-    'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.staticfiles',
+    # Third party apps
     'datetimewidget',
+    'crispy_forms',
+    ## Registration,
+    'registration',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -57,7 +63,7 @@ ROOT_URLCONF = 'chore_tracker.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['chore_app/templates/chore_app'],
+        'DIRS': ['chore_app/templates/chore_app', 'house/templates/house'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -121,3 +127,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+# Registration redux settings
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = True
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/chore_app/index/'
