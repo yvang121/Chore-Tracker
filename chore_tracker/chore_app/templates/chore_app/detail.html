@@ -42,133 +42,138 @@
 			<h1 style="position: relative; left: 10px; width: 500;">{{housemate.full_name }}</h1>
 				<div style="width: 100%;">
 			<!-- Overdue Chore Table -->
-			<table class="table table-hover">
-				<td class="info" style="text-align: center; font-size: 24; font-weight: bold; background-color: red" colspan="4"> OVERDUE</td>
-				<tr>
-					<th class="info">Status</th>
-					<th class="info">Chore Title</th>
-					<th class="info">Due Date</th>
-					<th class="info"></th>
-				</tr>
-							
-				{% for chore in overdue_set %}
-				{% cycle '<tr>' '' %}
-								{% if chore.is_done %}
-									<td>
-										<form method='POST' action=''>
-										{% csrf_token %}
-										<input type="checkbox" style="position: relative; left: 10px;" name='status' value='is_done' checked />
-										</form>
-									</td>
-									<td><strike> {{ chore.chore_title }} </strike></td>
-									<td><strike> {{ chore.due_date }} </strike></td>
-								{% else %}
-									<td><input type="checkbox" style="position: relative; left: 10px;" name='status'/></td>
-									<td> {{ chore.chore_title}} </td>
-									<td> {{ chore.due_date }} </td>
-								{% endif %}
-								<td style="text-align: center;"><a href="{% url 'chore_app:deleteChore' housemate.id chore.id %}" class="btn btn-danger" role="button"> 
-									<span class="glyphicon glyphicon-trash"></span> </a>
-								</td>
-							{% cycle '</tr>' ''%}
-							{% endfor %}
-			</table>
+			{% if overdue_set %}
+				<table class="table table-hover">
+					<td class="info" style="text-align: center; font-size: 24; font-weight: bold; background-color: red" colspan="4"> OVERDUE</td>
+					<tr>
+						<th class="info">Status</th>
+						<th class="info">Chore Title</th>
+						<th class="info">Due Date</th>
+						<th class="info"></th>
+					</tr>
+					{% for chore in overdue_set %}
+					{% cycle '<tr>' '' %}
+						{% if chore.is_done %}
+							<td>
+								<form method='POST' action=''>
+								{% csrf_token %}
+								<input type="checkbox" style="position: relative; left: 10px;" name='status' value='is_done' checked />
+								</form>
+							</td>
+							<td><strike> {{ chore.chore_title }} </strike></td>
+							<td><strike> {{ chore.due_date }} </strike></td>
+						{% else %}
+							<td><input type="checkbox" style="position: relative; left: 10px;" name='status'/></td>
+							<td> {{ chore.chore_title}} </td>
+							<td> {{ chore.due_date }} </td>
+						{% endif %}
+						<td style="text-align: center;"><a href="{% url 'chore_app:deleteChore' housemate.id chore.id %}" class="btn btn-danger" role="button"> 
+							<span class="glyphicon glyphicon-trash"></span> </a>
+						</td>
+					{% cycle '</tr>' ''%}
+					{% endfor %}
+				</table>
+			{% endif %}
 			<!-- Today Chore Table -->
-			<table class="table table-hover">
-				<td class="info" style="text-align: center; font-size: 24; font-weight: bold; background-color: rgb(153, 204, 255)" colspan="4"> TODAY</td>
-				<tr>
-					<th class="info">Status</th>
-					<th class="info">Chore Title</th>
-					<th class="info">Due Date</th>
-					<th class="info"></th>
-				</tr>
-							
-				{% for chore in today_set %}
-				{% cycle '<tr>' '' %}
-								{% if chore.is_done %}
-									<td>
-										<form method='POST' action=''>
-										{% csrf_token %}
-										<input type="checkbox" style="position: relative; left: 10px;" name='status' value='is_done' checked />
-										</form>
-									</td>
-									<td><strike> {{ chore.chore_title }} </strike></td>
-									<td><strike> {{ chore.due_date }} </strike></td>
-								{% else %}
-									<td><input type="checkbox" style="position: relative; left: 10px;" name='status'/></td>
-									<td> {{ chore.chore_title}} </td>
-									<td> {{ chore.due_date }} </td>
-								{% endif %}
-								<td style="text-align: center;"><a href="{% url 'chore_app:deleteChore' housemate.id chore.id %}" class="btn btn-danger" role="button"> 
-									<span class="glyphicon glyphicon-trash"></span> </a>
+			{% if today_set %}
+				<table class="table table-hover">
+					<td class="info" style="text-align: center; font-size: 24; font-weight: bold; background-color: rgb(153, 204, 255)" colspan="4"> TODAY</td>
+					<tr>
+						<th class="info">Status</th>
+						<th class="info">Chore Title</th>
+						<th class="info">Due Date</th>
+						<th class="info"></th>
+					</tr>		
+					{% for chore in today_set %}
+						{% cycle '<tr>' '' %}
+							{% if chore.is_done %}
+								<td>
+									<form method='POST' action=''>
+									{% csrf_token %}
+									<input type="checkbox" style="position: relative; left: 10px;" name='status' value='is_done' checked />
+									</form>
 								</td>
-							{% cycle '</tr>' ''%}
-							{% endfor %}
-			</table>
+								<td><strike> {{ chore.chore_title }} </strike></td>
+								<td><strike> {{ chore.due_date }} </strike></td>
+							{% else %}
+								<td><input type="checkbox" style="position: relative; left: 10px;" name='status'/></td>
+								<td> {{ chore.chore_title}} </td>
+								<td> {{ chore.due_date }} </td>
+							{% endif %}
+							<td style="text-align: center;"><a href="{% url 'chore_app:deleteChore' housemate.id chore.id %}" class="btn btn-danger" role="button"> 
+								<span class="glyphicon glyphicon-trash"></span> </a>
+							</td>
+						{% cycle '</tr>' ''%}
+					{% endfor %}
+				</table>
+			{% endif %}
+			{% if tomorrow_set %}
 			<!-- Tomorrow Chore Table -->
-			<table class="table table-hover">
-				<td class="info" style="text-align: center; font-size: 24; font-weight: bold; background-color: rgb(153, 204, 255)" colspan="4"> TOMORROW</td>
-				<tr>
-					<th class="info">Status</th>
-					<th class="info">Chore Title</th>
-					<th class="info">Due Date</th>
-					<th class="info"></th>
-				</tr>
-							
-				{% for chore in tomorrow_set %}
-				{% cycle '<tr>' '' %}
-								{% if chore.is_done %}
-									<td>
-										<form method='POST' action=''>
-										{% csrf_token %}
-										<input type="checkbox" style="position: relative; left: 10px;" name='status' value='is_done' checked />
-										</form>
-									</td>
-									<td><strike> {{ chore.chore_title }} </strike></td>
-									<td><strike> {{ chore.due_date }} </strike></td>
-								{% else %}
-									<td><input type="checkbox" style="position: relative; left: 10px;" name='status'/></td>
-									<td> {{ chore.chore_title}} </td>
-									<td> {{ chore.due_date }} </td>
-								{% endif %}
-								<td style="text-align: center;"><a href="{% url 'chore_app:deleteChore' housemate.id chore.id %}" class="btn btn-danger" role="button"> 
-									<span class="glyphicon glyphicon-trash"></span> </a>
+				<table class="table table-hover">
+					<td class="info" style="text-align: center; font-size: 24; font-weight: bold; background-color: rgb(153, 204, 255)" colspan="4"> TOMORROW</td>
+					<tr>
+						<th class="info">Status</th>
+						<th class="info">Chore Title</th>
+						<th class="info">Due Date</th>
+						<th class="info"></th>
+					</tr>
+								
+					{% for chore in tomorrow_set %}
+						{% cycle '<tr>' '' %}
+							{% if chore.is_done %}
+								<td>
+									<form method='POST' action=''>
+									{% csrf_token %}
+									<input type="checkbox" style="position: relative; left: 10px;" name='status' value='is_done' checked />
+									</form>
 								</td>
-							{% cycle '</tr>' ''%}
-							{% endfor %}
-			</table>
+								<td><strike> {{ chore.chore_title }} </strike></td>
+								<td><strike> {{ chore.due_date }} </strike></td>
+							{% else %}
+								<td><input type="checkbox" style="position: relative; left: 10px;" name='status'/></td>
+								<td> {{ chore.chore_title}} </td>
+								<td> {{ chore.due_date }} </td>
+							{% endif %}
+							<td style="text-align: center;"><a href="{% url 'chore_app:deleteChore' housemate.id chore.id %}" class="btn btn-danger" role="button"> 
+								<span class="glyphicon glyphicon-trash"></span> </a>
+							</td>
+						{% cycle '</tr>' ''%}
+					{% endfor %}
+				</table>
+			{% endif %}
 			<!-- Upcoming Chore Table -->
-			<table class="table table-hover">
-				<td class="info" style="text-align: center; font-size: 24; font-weight: bold; background-color: rgb(153, 204, 255)" colspan="4"> UPCOMING</td>
-				<tr>
-					<th class="info">Status</th>
-					<th class="info">Chore Title</th>
-					<th class="info">Due Date</th>
-					<th class="info"></th>
-				</tr>
-							
-				{% for chore in upcoming_set %}
-				{% cycle '<tr>' '' %}
-								{% if chore.is_done %}
-									<td>
-										<form method='POST' action=''>
-										{% csrf_token %}
-										<input type="checkbox" style="position: relative; left: 10px;" name='status' value='is_done' checked />
-										</form>
-									</td>
-									<td><strike> {{ chore.chore_title }} </strike></td>
-									<td><strike> {{ chore.due_date }} </strike></td>
-								{% else %}
-									<td><input type="checkbox" style="position: relative; left: 10px;" name='status'/></td>
-									<td> {{ chore.chore_title}} </td>
-									<td> {{ chore.due_date }} </td>
-								{% endif %}
-								<td style="text-align: center;"><a href="{% url 'chore_app:deleteChore' housemate.id chore.id %}" class="btn btn-danger" role="button"> 
-									<span class="glyphicon glyphicon-trash"></span> </a>
-								</td>
-							{% cycle '</tr>' ''%}
-							{% endfor %}
-			</table>
+			{% if upcoming_set %}
+				<table class="table table-hover">
+					<td class="info" style="text-align: center; font-size: 24; font-weight: bold; background-color: rgb(153, 204, 255)" colspan="4"> UPCOMING</td>
+					<tr>
+						<th class="info">Status</th>
+						<th class="info">Chore Title</th>
+						<th class="info">Due Date</th>
+						<th class="info"></th>
+					</tr>			
+					{% for chore in upcoming_set %}
+					{% cycle '<tr>' '' %}
+						{% if chore.is_done %}
+							<td>
+								<form method='POST' action=''>
+								{% csrf_token %}
+								<input type="checkbox" style="position: relative; left: 10px;" name='status' value='is_done' checked />
+								</form>
+							</td>
+							<td><strike> {{ chore.chore_title }} </strike></td>
+							<td><strike> {{ chore.due_date }} </strike></td>
+						{% else %}
+							<td><input type="checkbox" style="position: relative; left: 10px;" name='status'/></td>
+							<td> {{ chore.chore_title}} </td>
+							<td> {{ chore.due_date }} </td>
+						{% endif %}
+						<td style="text-align: center;"><a href="{% url 'chore_app:deleteChore' housemate.id chore.id %}" class="btn btn-danger" role="button"> 
+							<span class="glyphicon glyphicon-trash"></span> </a>
+						</td>
+					{% cycle '</tr>' ''%}
+					{% endfor %}
+				</table>
+			{% endif %}
 				</div>
 			<div class="button">
 				<a href="{% url 'chore_app:addChore' housemate.id %}" class="btn btn-primary" role="button">Add Chore</a></button>
