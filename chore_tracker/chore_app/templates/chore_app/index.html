@@ -29,6 +29,7 @@ body {
 			</button>
 			<div class="collapse navbar-collapse navHeaderCollapse">
 				<ul class="nav navbar-nav navbar-right">
+                    <li><a href="../accounts/logout/">Log out</a></li>
 					<!-- Settings dropdown menu -->
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="font-family:Cambria">Settings<b class="caret"></b></a>
@@ -39,8 +40,21 @@ body {
 						</ul>
 					</li>
 				</ul>
-			</div>
-		</div>
+                <!-- Login form-->
+                {% if not request.user.is_authenticated %}
+                    <form class="navbar-form navbar-right" method="POST" action=""/>{% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="username" placeholder="Username"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="password" placeholder="Password"/>
+                    </div>
+                    <button type="submit" class="btn btn-default">Login</button>
+                    </form>
+                {% endif %}
+
+            </div>
+        </div>
 	</nav>
 	<!-- List all of the names in the household of housemates -->
 	{% if alphabetical_order %}

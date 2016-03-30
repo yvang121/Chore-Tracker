@@ -3,7 +3,7 @@ from django.db import models
 import datetime
 from django.db import models
 from django.utils import timezone
-from django.forms import fields
+from django.forms import fields, PasswordInput
 
 '''Our models include a Housemate entity, which has a dependent entity
 of chores. A chore entity cannot exist independent of a housemate.
@@ -40,3 +40,16 @@ class Chore(models.Model):
 
 	class Meta:
 		ordering = ['due_date']
+
+class SignUp(models.Model):
+	username = models.CharField(max_length = 120)
+	email = models.EmailField()
+	password1 = models.CharField(max_length = 120)
+	password2 = models.CharField(max_length = 120)
+
+	def __str__(self):
+		return self.email
+
+class Login(models.Model):
+	username = models.CharField(max_length=120)
+	password = models.CharField(max_length=120)

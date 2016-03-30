@@ -4,8 +4,31 @@ from django.core.urlresolvers import reverse
 from django.views import generic
 from django.utils import timezone
 
-from .forms import ChoreForm, HousemateForm
+from django.contrib.auth.views import password_reset_confirm
+
+from .forms import ChoreForm, HousemateForm, LogInForm, SignUpForm
 from .models import Housemate, Chore
+
+# Regsitration
+def home(request):
+	title = 'Welcome'
+	form = LogInForm(request.POST or None)
+	context = {
+		"title": title,
+		"form": form
+	}
+
+	if form.is_valid():
+		instance = form.save(commit=False)
+		username = form.cleaned_data.get("username")
+		if not username:
+			username = "New full name"
+		instance.full_name = username
+		instance.save()
+		context = {
+			"title": "Thank you"
+		}
+	return render(request, "chore_app/home.html", context)
 
 class IndexView(generic.ListView):
 	'''Displays a generic display for a particular object. The input
