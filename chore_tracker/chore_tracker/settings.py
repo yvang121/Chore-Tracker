@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'chore_app.apps.ChoreAppConfig',
+    'house.apps.HouseConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -57,7 +58,7 @@ ROOT_URLCONF = 'chore_tracker.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['chore_app/templates/chore_app'],
+        'DIRS': ['chore_app/templates/chore_app', 'house/templates/house'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
