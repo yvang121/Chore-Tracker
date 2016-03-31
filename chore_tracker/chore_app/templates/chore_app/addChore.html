@@ -44,8 +44,10 @@
 	<form method='POST' action='' style="position: relative; padding-left: 10px; padding-right: 10px">
 		{% csrf_token %}
 		{{ form.as_p }}
-		<input style="position: relative; top: 5;" type='submit' class = "btn btn-success pull-left" value='Add Chore'/>
-		<div class="cancel">
+		<div class='save'>
+			<input type='submit' class = "btn btn-success pull-left" value='Add Chore'/>
+		</div>
+		<div class='cancel'>
 			<a href="{% url 'chore_app:detail' housemate.id %}" class="btn btn-danger" role="button">Cancel</a>
 		</div>
 	</form>
