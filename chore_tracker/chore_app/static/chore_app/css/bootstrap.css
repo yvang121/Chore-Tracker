@@ -2264,7 +2264,6 @@ th {
 .table {
   width: 100%;
   max-width: 100%;
-  margin-bottom: 20px;
 }
 .table > thead > tr > th,
 .table > tbody > tr > th,
@@ -2272,7 +2271,6 @@ th {
 .table > thead > tr > td,
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
-  padding: 8px;
   line-height: 1.42857143;
   vertical-align: top;
   border-top: 1px solid #ddd;
@@ -3231,18 +3229,15 @@ fieldset[disabled] .btn-success.focus {
   background-color: #fff;
 }
 .btn-info {
-  color: #fff;
   background-color: #5bc0de;
   border-color: #46b8da;
 }
 .btn-info:focus,
 .btn-info.focus {
-  color: #fff;
   background-color: #31b0d5;
   border-color: #1b6d85;
 }
 .btn-info:hover {
-  color: #fff;
   background-color: #31b0d5;
   border-color: #269abc;
 }
@@ -4169,7 +4164,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar {
   position: relative;
   min-height: 50px;
-  margin-bottom: 20px;
   border: 1px solid transparent;
 }
 @media (min-width: 768px) {
