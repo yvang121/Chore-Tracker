@@ -1,14 +1,12 @@
 {% load staticfiles %}
 
 <head>
+<link rel="stylesheet" type="text/css" href="{% static 'chore_app/style.css' %}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'chore_app/css/bootstrap.min.css' %}"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="{% static 'chore_app/style.css' %}"/>
-<link rel="stylesheet" type="text/css" href="{% static 'chore_app/css.stylesheet.css' %}">
 <link rel="icon" type="image/png" sizes="16x16" href="{% static 'chore_app/images/icon2.png' %}">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script src="js/bootstrap.js"></script>
 </head>
 
 <!-- set the heading to the housemate's first name, from database -->
@@ -39,50 +37,60 @@
 		</div>
 	</nav>
 		<div>
-			<h1 style="position: relative; left: 10px; width: 500;">{{housemate.full_name }}</h1>
-				<div style="width: 100%;">
+			<div id='name'>
+				<h1>{{housemate.full_name }}</h1>
+			</div>
+			<div id='add-chore'>
+				<a href="{% url 'chore_app:addChore' housemate.id %}" class="btn btn-primary" role="button">Add Chore</a>
+			</div>
+			<div class='contain'>
 			<!-- Overdue Chore Table -->
 			{% if overdue_set %}
-				<table class="table table-hover">
-					<td class="info" style="text-align: center; font-size: 24; font-weight: bold; background-color: red" colspan="4"> OVERDUE</td>
-					<tr>
-						<th class="info">Status</th>
-						<th class="info">Chore Title</th>
-						<th class="info">Due Date</th>
-						<th class="info"></th>
-					</tr>
-					{% for chore in overdue_set %}
-					{% cycle '<tr>' '' %}
-						{% if chore.is_done %}
-							<td>
-								<form method='POST' action=''>
-								{% csrf_token %}
-								<input type="checkbox" style="position: relative; left: 10px;" name='status' value='is_done' checked />
-								</form>
+				<button id='dropdown-overdue' type='button' class='btn' data-toggle='collapse' data-target='#overdue'>OVERDUE</button>
+				<div id='overdue' class='collapse in'>
+					<table class="table table-hover">
+						<tr>
+							<th class="table-header">Status</th>
+							<th class="table-header">Chore Title</th>
+							<th class="table-header">Due Date</th>
+							<th class="table-header"></th>
+						</tr>
+						{% for chore in overdue_set %}
+						{% cycle '<tr>' '' %}
+							{% if chore.is_done %}
+								<td>
+									<form method='POST' action=''>
+									{% csrf_token %}
+									<input type="checkbox" style="position: relative; left: 10px;" name='status' value='is_done' checked />
+									</form>
+								</td>
+								<td><strike> {{ chore.chore_title }} </strike></td>
+								<td><strike> {{ chore.due_date }} </strike></td>
+							{% else %}
+								<td><input type="checkbox" style="position: relative; left: 10px;" name='status'/></td>
+								<td> {{ chore.chore_title}} </td>
+								<td> {{ chore.due_date }} </td>
+							{% endif %}
+							<td style="text-align: center;"><a href="{% url 'chore_app:deleteChore' housemate.id chore.id %}" class="btn btn-danger" role="button"> 
+								<span class="glyphicon glyphicon-trash"></span> </a>
 							</td>
-							<td><strike> {{ chore.chore_title }} </strike></td>
-							<td><strike> {{ chore.due_date }} </strike></td>
-						{% else %}
-							<td><input type="checkbox" style="position: relative; left: 10px;" name='status'/></td>
-							<td> {{ chore.chore_title}} </td>
-							<td> {{ chore.due_date }} </td>
-						{% endif %}
-						<td style="text-align: center;"><a href="{% url 'chore_app:deleteChore' housemate.id chore.id %}" class="btn btn-danger" role="button"> 
-							<span class="glyphicon glyphicon-trash"></span> </a>
-						</td>
-					{% cycle '</tr>' ''%}
-					{% endfor %}
-				</table>
+						{% cycle '</tr>' ''%}
+						{% endfor %}
+					</table>
+				</div>
 			{% endif %}
 			<!-- Today Chore Table -->
 			{% if today_set %}
+			<div>
+				<button id='dropdown-today' type='button' class='btn collapsed' data-toggle='collapse' data-target='#today'>TODAY</button>
+			</div>
+			<div id='today' class='collapse in'>
 				<table class="table table-hover">
-					<td class="info" style="text-align: center; font-size: 24; font-weight: bold; background-color: rgb(153, 204, 255)" colspan="4"> TODAY</td>
 					<tr>
-						<th class="info">Status</th>
-						<th class="info">Chore Title</th>
-						<th class="info">Due Date</th>
-						<th class="info"></th>
+						<th class="table-header">Status</th>
+						<th class="table-header">Chore Title</th>
+						<th class="table-header">Due Date</th>
+						<th class="table-header"></th>
 					</tr>		
 					{% for chore in today_set %}
 						{% cycle '<tr>' '' %}
@@ -103,19 +111,28 @@
 							<td style="text-align: center;"><a href="{% url 'chore_app:deleteChore' housemate.id chore.id %}" class="btn btn-danger" role="button"> 
 								<span class="glyphicon glyphicon-trash"></span> </a>
 							</td>
-						{% cycle '</tr>' ''%}
+						{% cycle '' '</tr>'%}
 					{% endfor %}
 				</table>
+			</div>
+			{% else %}
+				<button id='dropdown-today' type='button' class='btn' data-toggle='collapse' data-target='#today'>TODAY</button>
+				<div id='today' class='collapse'>
+					<p id='no-chores'>No chores for today! <span class='glyphicon glyphicon-check'></span></p>
+				</div>
 			{% endif %}
 			{% if tomorrow_set %}
 			<!-- Tomorrow Chore Table -->
+			<div>
+				<button id='dropdown-tomorrow' type='button' class='btn' data-toggle='collapse' data-target='#tomorrow'>TOMORROW</button>
+			</div>
+			<div id='tomorrow' class='collapse'>
 				<table class="table table-hover">
-					<td class="info" style="text-align: center; font-size: 24; font-weight: bold; background-color: rgb(153, 204, 255)" colspan="4"> TOMORROW</td>
 					<tr>
-						<th class="info">Status</th>
-						<th class="info">Chore Title</th>
-						<th class="info">Due Date</th>
-						<th class="info"></th>
+						<th class="table-header">Status</th>
+						<th class="table-header">Chore Title</th>
+						<th class="table-header">Due Date</th>
+						<th class="table-header"></th>
 					</tr>
 								
 					{% for chore in tomorrow_set %}
@@ -140,16 +157,20 @@
 						{% cycle '</tr>' ''%}
 					{% endfor %}
 				</table>
+			</div>
 			{% endif %}
 			<!-- Upcoming Chore Table -->
 			{% if upcoming_set %}
+			<div>
+				<button id='dropdown-upcoming' type='button' class='btn' data-toggle='collapse' data-target='#upcoming'>UPCOMING</button>
+			</div>
+				<div id='upcoming' class='collapse'>
 				<table class="table table-hover">
-					<td class="info" style="text-align: center; font-size: 24; font-weight: bold; background-color: rgb(153, 204, 255)" colspan="4"> UPCOMING</td>
 					<tr>
-						<th class="info">Status</th>
-						<th class="info">Chore Title</th>
-						<th class="info">Due Date</th>
-						<th class="info"></th>
+						<th class="table-header">Status</th>
+						<th class="table-header">Chore Title</th>
+						<th class="table-header">Due Date</th>
+						<th class="table-header"></th>
 					</tr>			
 					{% for chore in upcoming_set %}
 					{% cycle '<tr>' '' %}
@@ -173,10 +194,11 @@
 					{% cycle '</tr>' ''%}
 					{% endfor %}
 				</table>
+			</div>
 			{% endif %}
 				</div>
-			<div class="button">
+<!-- 			<div class="button">
 				<a href="{% url 'chore_app:addChore' housemate.id %}" class="btn btn-primary" role="button">Add Chore</a></button>
-			</div>
+			</div> -->
 		</div>
 </body>
