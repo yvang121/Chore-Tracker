@@ -111,7 +111,7 @@
 							<td style="text-align: center;"><a href="{% url 'chore_app:deleteChore' housemate.id chore.id %}" class="btn btn-danger" role="button"> 
 								<span class="glyphicon glyphicon-trash"></span> </a>
 							</td>
-						{% cycle '' '</tr>'%}
+						{% cycle '</tr>' ''%}
 					{% endfor %}
 				</table>
 			</div>
