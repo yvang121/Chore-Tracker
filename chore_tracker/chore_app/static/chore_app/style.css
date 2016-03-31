@@ -13,18 +13,16 @@ ul {
 	list-style: square;
 }
 
-table, tr, th, td {
-	position: static;
-	text-align: left;
-}
-
 table {
-	margin: 0;
+	margin-bottom: 0px;
+    padding: 0;
 }
 
-th, td {
+td {
+    font-size: 16;
 	font-family: inherit, Calibri, Candara, Segoe, 'Sego UI', Optima;
 	font-style: normal;
+    padding: 0;
 }
 
 input {
@@ -32,34 +30,39 @@ input {
   border: solid 1px #dcdcdc;
   transition: box-shadow 0.3s, border 0.3s;
   font-family: inherit;
-
-  /* Pencil look */
-/*  padding: 5px;
-  border: none;
-  border-bottom: solid 1px #c9c9c9;
-  transition: border 0.3s;*/
-
 }
 
-input[type='submit'] {
-    padding:5px 15px; 
-    /*background:#52527a; */
-    border:0 none;
-    cursor:pointer;
+input[type='submit'] { 
+    cursor: pointer;
     -webkit-border-radius: 5px;
-    border-radius: 5px; 
+    border-radius: 5px;
+    margin: 15px 0px; 
 }
 
-div.button {
-	position: fixed;
-	right: 3;
-	top: 55;
+#name {
+    float: left;
+}
+
+#add-chore {
+    float: right;
+	margin-top: 20;
+    margin-bottom: 10;
+    margin-right: 5;
+}
+
+#add-housemate{
+    float: right;
+    margin-bottom: 10;
+}
+
+div.save {
+    margin: 15px 5px;
 }
 
 div.cancel {
 	position: absolute;
-	padding:5px 15px;
-	left: 190;
+	margin:15px 5px;
+    left: 150;
 }
 
 div.add {
@@ -70,6 +73,10 @@ div.add {
 	font-size: 32;
 }
 
+div#name-button {
+    float: left;
+}
+
 .edit-info {
 	position: relative; 
 	background-color: #5bc0de;
@@ -77,4 +84,68 @@ div.add {
 	text-align: center; 
 	bottom: 3;
 	line-height: 0.5em;
+}
+
+.contain {
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+}
+
+th.table-header {
+    font-size: 18;
+    font-family: 'Segoe UI';
+    font-weight: 625;
+    padding: 0;
+}
+
+#dropdown-overdue {
+    padding: 2px;
+    border-radius: 5px;
+    font-size: 24;
+    text-align: center;
+    width: 100%;
+    font-family: "Open (sans)";
+    background-color: #d9534f;
+    font-weight: 700;
+}
+
+#dropdown-today {
+    font-family: 'Open Sans', 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Tahoma, Arial, sans-serif;
+    background-color: #47d147;
+    font-weight: 400;
+    border-radius: 5px;
+    font-size: 24;
+    text-align: center;
+    padding: 0;
+    width:100%;
+}
+
+#no-chores {
+    font-family: 'Open Sans', 'Segoe UI', Tahoma, Arial, sans-serif, Sans;
+    font-size: 20;
+    font-weight: 500;
+    text-align: center;
+}
+
+#dropdown-tomorrow {
+    font-family: 'Segoe UI', 'Dejavu Sans', Calibri, Dejavu, Frutiger, Tahoma, Arial, Helvetica, Times;
+    background-color: #b3d9ff;
+    font-weight: 400;
+    border-radius: 5px;
+    font-size: 24;
+    text-align: center;
+    padding: 0;
+    width:100%;
+}
+
+#dropdown-upcoming {
+    font-family: 'Segoe UI', 'Dejavu Sans', Calibri, Dejavu, Frutiger, Tahoma, Arial, Helvetica, Times;
+    background-color: ;
+    font-weight: 400;
+    border-radius: 5px;
+    font-size: 24;
+    text-align: center;
+    padding: 0;
+    width:100%;
 }
