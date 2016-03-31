@@ -58,29 +58,29 @@ body {
 	</nav>
 	<!-- List all of the names in the household of housemates -->
 	{% if alphabetical_order %}
-	<div style="position: relative; left:15; width: 400; bottom: 10">
-		<h1>Housemates:</h1>
-	</div>
+	<div>
+		<div id='add-housemate'>
+			<a href="{% url 'chore_app:addHousemate' %}" class="btn btn-primary" role="button">Add Housemate</a>
+		</div>
+		<div>
+			<h1>Housemates:</h1>
+		</div>
 		<!-- If names exist in database, list them out in for loop -->
 		<div>
 		    <ul>
 		    {% for housemate in alphabetical_order %}
-		    	<div>
-		        	<li>
-		        		<a style="font-size: 26; font-family: Cambria; color: green; text-decoration: none; padding: 20px" href="{% url 'chore_app:detail' housemate.id %}">{{ housemate.full_name }}</a>
-		        		<a href="{% url 'chore_app:editInfo' housemate.id %}" class="btn btn-info"> <span class="glyphicon glyphicon-pencil"></span></a>
-		        		<a href="{% url 'chore_app:deleteHousemate' housemate.id %}" class="btn btn-danger"> <span class="glyphicon glyphicon-trash"></span></a>
-		        	</li>
-		    	</div>
+	        	<li>
+	        		<a style="font-size: 26; font-family: Cambria; color: green; text-decoration: none;" href="{% url 'chore_app:detail' housemate.id %}">{{ housemate.full_name }}</a>
+	        		<a href="{% url 'chore_app:editInfo' housemate.id %}" class="btn btn-info"> <span class="glyphicon glyphicon-pencil"></span></a>
+	        		<a href="{% url 'chore_app:deleteHousemate' housemate.id %}" class="btn btn-danger"> <span class="glyphicon glyphicon-trash"></span></a>
+	        	</li>
 		    {% endfor %}
 		    </ul>
 		</div>
+	</div>
 	{% else %}
 		<!-- print statement displaying no names available -->
 	    <p>No names are available.</p>
 {% endif %}
-	<div class="button">
-		<a href="{% url 'chore_app:addHousemate' %}" class="btn btn-primary" role="button">Add Housemate</a>
-	</div>
 </body>
 
