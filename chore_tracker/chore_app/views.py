@@ -122,7 +122,7 @@ def editInfo(request, housemate_id):
 		if 'email' in request.POST and request.POST['email'] != '':
 			housemate.email = request.POST['email']
 		housemate.save()
-		return HttpResponseRedirect('/chore_app/')
+		return HttpResponseRedirect('/chore_app/index')
 	return render(request, 'chore_app/editInfo.html')
 
 def deleteHousemate(request, housemate_id):

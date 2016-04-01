@@ -7,7 +7,7 @@ app_name = 'chore_app'
 
 urlpatterns = [
 	url(r'^$',views.home,name='home'),
-	# url(r'^', include('django.contrib.auth.urls')),
+	url(r'^house/', include('house.urls')),
 	url(r'^index/$', views.IndexView.as_view(), name='index'),
 	url(r'^housemate/(?P<housemate_id>[0-9]+)/$', views.detail, name='detail'),
 	url(r'^(?P<housemate_id>[0-9]+)/add_chore$', views.addChore, name='addChore'),
