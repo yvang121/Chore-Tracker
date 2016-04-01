@@ -3,11 +3,9 @@
 <link rel="stylesheet" type="text/css" href="{% static 'chore_app/css/bootstrap.min.css' %}"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="{% static 'chore_app/style.css' %}"/>
-<link rel="stylesheet" type="text/css" href="{% static 'chore_app/css.stylesheet.css' %}">
 <link rel="icon" type="image/png" sizes="16x16" href="{% static 'chore_app/images/icon2.png' %}">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script src="js/bootstrap.js"></script>
 </head>
 
 <title>Edit Housemate</title>
@@ -23,7 +21,6 @@
 			</button>
 			<div class="collapse navbar-collapse navHeaderCollapse">
 				<ul class="nav navbar-nav navbar-right">
-                    <li><a href="../accounts/logout/">Log out</a></li>
 					<!-- Settings dropdown menu -->
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="font-family:Cambria">Settings<b class="caret"></b></a>
@@ -37,21 +34,20 @@
 			</div>
 		</div>
 	</nav>
-	<h1 style="position: relative; left: 10px; width: 400; font-size: 25;">Edit Housemate</h1>
-    <form method='POST' action='' style="position: relative;left: 10px">
-        {% csrf_token %}
-        <label>First name</label></br>
-        <input type='text' name='first_name' default='None'/></br>
-        <label>Last name</label></br>
-        <input type='text' name='last_name'/></br>
-        <label>Email</label></br>
-        <input type='text' name='email'/></br>
-        <div class='save'>
-            <input type='submit' class = "btn btn-success pull-left" value='Save'/>
-        </div>
-        <div class="cancel">
-            <a href="{% url 'chore_app:index' %}" class="btn btn-danger" role="button">Cancel</a>
-        </div>
-    </form>
-
+	<h1 style="position: relative; left: 10px; width: 400; font-size: 25;">Edit Housemate</h1> 
+	<form method='POST' action='' style="position: relative;left: 10px">
+		{% csrf_token %}
+		<label>First name</label></br> 
+		<input type='text' name='first_name' default='None'/></br>
+		<label>Last name</label></br>
+		<input type='text' name='last_name'/></br>
+		<label>Email</label></br>
+		<input type='text' name='email'/></br>
+		<div class='save'>
+			<input type='submit' class = "btn btn-success pull-left" value='Save'/>
+		</div>
+		<div class="cancel">
+			<a href="{% url 'chore_app:index' %}" class="btn btn-danger" role="button">Cancel</a>
+		</div>
+	</form>
 </body>
