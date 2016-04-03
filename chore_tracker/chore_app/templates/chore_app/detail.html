@@ -51,28 +51,22 @@
 				<div id='overdue' class='collapse in'>
 					<table class="table table-hover">
 						<tr>
-							<th class="table-header">Status</th>
 							<th class="table-header">Chore Title</th>
 							<th class="table-header">Due Date</th>
 							<th class="table-header"></th>
 						</tr>
 						{% for chore in overdue_set %}
 						{% cycle '<tr>' '' %}
-							{% if chore.is_done %}
-								<td>
-									<form method='POST' action=''>
-									{% csrf_token %}
-									<input type="checkbox" style="position: relative; left: 10px;" name='status' value='is_done' checked />
-									</form>
-								</td>
-								<td><strike> {{ chore.chore_title }} </strike></td>
-								<td><strike> {{ chore.due_date }} </strike></td>
-							{% else %}
-								<td><input type="checkbox" style="position: relative; left: 10px;" name='status'/></td>
-								<td> {{ chore.chore_title}} </td>
-								<td> {{ chore.due_date }} </td>
-							{% endif %}
-							<td style="text-align: center;"><a href="{% url 'chore_app:deleteChore' housemate.id chore.id %}" class="btn btn-danger" role="button"> 
+							<td> {{ chore.chore_title}} </td>
+							<td> {{ chore.due_date }} </td>
+							<td class='delete-btn'><a href="{% url 'chore_app:deleteChore' housemate.id chore.id %}" class="btn btn-danger" role="button" onclick='clicked(event)'>
+								<script>
+									function clicked(e) {
+									    if(!confirm('Are you sure you would like to delete this chore?')) {
+									    	e.preventDefault();
+									    }
+									}
+								</script> 
 								<span class="glyphicon glyphicon-trash"></span> </a>
 							</td>
 						{% cycle '</tr>' ''%}
@@ -89,28 +83,22 @@
 				<div id='today' class='collapse in'>
 					<table class="table table-hover">
 						<tr>
-							<th class="table-header">Status</th>
 							<th class="table-header">Chore Title</th>
 							<th class="table-header">Due Date</th>
 							<th class="table-header"></th>
 						</tr>		
 						{% for chore in today_set %}
 							{% cycle '<tr>' '' %}
-								{% if chore.is_done %}
-									<td>
-										<form method='POST' action=''>
-										{% csrf_token %}
-										<input type="checkbox" style="position: relative; left: 10px;" name='status' value='is_done' checked />
-										</form>
-									</td>
-									<td><strike> {{ chore.chore_title }} </strike></td>
-									<td><strike> {{ chore.due_date }} </strike></td>
-								{% else %}
-									<td><input type="checkbox" style="position: relative; left: 10px;" name='status'/></td>
-									<td> {{ chore.chore_title}} </td>
-									<td> {{ chore.due_date }} </td>
-								{% endif %}
-								<td class='delete-btn'><a href="{% url 'chore_app:deleteChore' housemate.id chore.id %}" class="btn btn-danger" role="button"> 
+								<td> {{ chore.chore_title}} </td>
+								<td> {{ chore.due_date }} </td>
+								<td class='delete-btn'><a href="{% url 'chore_app:deleteChore' housemate.id chore.id %}" class="btn btn-danger" role="button" onclick='clicked(event)'> 
+									<script>
+										function clicked(e) {
+										    if(!confirm('Are you sure you would like to delete this chore?')) {
+										    	e.preventDefault();
+										    }
+										}
+									</script> 
 									<span class="glyphicon glyphicon-trash"></span> </a>
 								</td>
 							{% cycle '</tr>' ''%}
@@ -136,32 +124,25 @@
 				<div id='tomorrow' class='collapse'>
 					<table class="table table-hover">
 						<tr>
-							<th class="table-header">Status</th>
 							<th class="table-header">Chore Title</th>
 							<th class="table-header">Due Date</th>
 							<th class="table-header"></th>
-						</tr>
-									
+						</tr>			
 						{% for chore in tomorrow_set %}
 							{% cycle '<tr>' '' %}
-								{% if chore.is_done %}
-									<td>
-										<form method='POST' action=''>
-										{% csrf_token %}
-										<input type="checkbox" style="position: relative; left: 10px;" name='status' value='is_done' checked />
-										</form>
-									</td>
-									<td><strike> {{ chore.chore_title }} </strike></td>
-									<td><strike> {{ chore.due_date }} </strike></td>
-								{% else %}
-									<td><input type="checkbox" style="position: relative; left: 10px;" name='status'/></td>
-									<td> {{ chore.chore_title}} </td>
-									<td> {{ chore.due_date }} </td>
-								{% endif %}
-								<td class='delete-btn'><a href="{% url 'chore_app:deleteChore' housemate.id chore.id %}" class="btn btn-danger" role="button"> 
+								<td> {{ chore.chore_title}} </td>
+								<td> {{ chore.due_date }} </td>
+								<td class='delete-btn'><a href="{% url 'chore_app:deleteChore' housemate.id chore.id %}" class="btn btn-danger" role="button" onclick='clicked(event)'>
+									<script>
+										function clicked(e) {
+										    if(!confirm('Are you sure you would like to delete this chore?')) {
+										    	e.preventDefault();
+										    }
+										}
+									</script> 
 									<span class="glyphicon glyphicon-trash"></span> </a>
 								</td>
-							{% cycle '</tr>' ''%}
+							{% cycle '</tr>' '' %}
 						{% endfor %}
 					</table>
 				</div>
@@ -175,28 +156,22 @@
 				<div id='upcoming' class='collapse'>
 					<table class="table table-hover">
 						<tr>
-							<th class="table-header">Status</th>
 							<th class="table-header">Chore Title</th>
 							<th class="table-header">Due Date</th>
 							<th class="table-header"></th>
 						</tr>			
 						{% for chore in upcoming_set %}
 						{% cycle '<tr>' '' %}
-							{% if chore.is_done %}
-								<td>
-									<form method='POST' action=''>
-									{% csrf_token %}
-									<input type="checkbox" style="position: relative; left: 10px;" name='status' value='is_done' checked />
-									</form>
-								</td>
-								<td><strike> {{ chore.chore_title }} </strike></td>
-								<td><strike> {{ chore.due_date }} </strike></td>
-							{% else %}
-								<td><input type="checkbox" style="position: relative; left: 10px;" name='status'/></td>
-								<td> {{ chore.chore_title}} </td>
-								<td> {{ chore.due_date }} </td>
-							{% endif %}
-							<td class='delete-btn'><a href="{% url 'chore_app:deleteChore' housemate.id chore.id %}" class="btn btn-danger" role="button"> 
+							<td> {{ chore.chore_title}} </td>
+							<td> {{ chore.due_date }} </td>
+							<td class='delete-btn'><a href="{% url 'chore_app:deleteChore' housemate.id chore.id %}" class="btn btn-danger" role="button" onclick='clicked(event)'>
+								<script>
+									function clicked(e) {
+									    if(!confirm('Are you sure you would like to delete this chore?')) {
+									    	e.preventDefault();
+									    }
+									}
+								</script> 
 								<span class="glyphicon glyphicon-trash"></span> </a>
 							</td>
 						{% cycle '</tr>' ''%}
