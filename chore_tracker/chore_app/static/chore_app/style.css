@@ -52,6 +52,7 @@ input[type='submit'] {
 	margin-top: 20;
     margin-bottom: 10;
     margin-right: 5;
+    border-bottom: 3;
 }
 
 #add-housemate {
