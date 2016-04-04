@@ -22,6 +22,13 @@ nav.navbar-inverse {
     margin-bottom: 0px;
 }
 
+.navbar-brand {
+    font-family: 'Segoe UI', 'Calibri', 'Segoe';
+    font-size: 26;
+    font-weight: 300;
+    padding-left: 7px;
+}
+
 td {
     font-size: 16;
 	font-family: inherit, Calibri, Candara, Segoe, 'Sego UI', Optima;
@@ -52,7 +59,6 @@ input[type='submit'] {
 	margin-top: 20;
     margin-bottom: 10;
     margin-right: 5;
-    border-bottom: 3;
 }
 
 #add-housemate {
