@@ -69,6 +69,8 @@ input[type='submit'] {
 #add-house {
     float: right;
     margin-bottom: 10;
+    margin-top: 20;
+    margin-right: 5;
 }
 
 a.housemate-name {
@@ -80,10 +82,14 @@ a.housemate-name {
 }
 
 a.house-name {
-    font-size: 32;
+    font-size: 30;
     font-family: 'Open sans', 'Segoe UI', 'Calibri';
     text-decoration: none;
     font-weight: 300;
+}
+
+#edit-del-btn {
+    margin-bottom: 17;
 }
 
 div.save {
