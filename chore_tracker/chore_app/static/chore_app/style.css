@@ -66,10 +66,22 @@ input[type='submit'] {
     margin-bottom: 10;
 }
 
+#add-house {
+    float: right;
+    margin-bottom: 10;
+}
+
 a.housemate-name {
     font-size: 30; 
     font-family: Cambria; 
     color: green; 
+    text-decoration: none;
+    font-weight: 300;
+}
+
+a.house-name {
+    font-size: 32;
+    font-family: 'Open sans', 'Segoe UI', 'Calibri';
     text-decoration: none;
     font-weight: 300;
 }
