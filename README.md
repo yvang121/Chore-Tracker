@@ -11,9 +11,9 @@ addition or deletion of chores for a housemate and editing housemate information
 * `House` data model entity
 
 ### Steps to install and use the Django API:
-Skip steps as needed if you know you've already completed them i.e. already have Python 2.7+ installed.
+Skip steps as needed if you know you've already completed them i.e. already have Python 3.4 installed.
 
-1. Install Python 2.7+ <a href='https://www.python.org/downloads/' target='_blank'>here</a> (although we've been developing with Python 			version 3.4+) 
+1. Install Python 3.4+ <a href='https://www.python.org/downloads/' target='_blank'>here</a>.
 2. Install Pip for an easier installation process <a href='https://bootstrap.pypa.io/get-pip.py' target='_blank'>here</a>. This is a link to the script for pip that contains data for installation. Right click and select 'Save As' and place it somewhere. Make sure your environment variables allow python scripts to be callable from the command line. Depending on your Operating System, if you aren't sure how to add python to your path, google 'Adding Python to Path'. You can check if your path has been correctly configured by executing this command on the command line: `python --version`. Change directory (cd) over to the folder directory containing the pip script. Once all of that is done, execute the command: `python get-pip.py`. This will install Pip onto your computer.
 3. Install Django by executing the command: `pip install django`. This will install the Django API onto your computer.
 4. Install the datetime widget for Django by executing the command: `pip install django-datetime-widget`.
