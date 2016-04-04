@@ -32,7 +32,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'chore_app.apps.ChoreAppConfig',
-    'house.apps.HouseConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,6 +44,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     ## Registration,
     'registration',
+    'house',
 ]
 
 MIDDLEWARE_CLASSES = [
