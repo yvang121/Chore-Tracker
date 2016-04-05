@@ -17,11 +17,8 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 urlpatterns = [
-	url(r'^chore_app/', include('chore_app.urls')),
+	url(r'^', include('chore_app.urls')),
 	url(r'^house/', include('house.urls')),
     url(r'^admin/', admin.site.urls),
-    # Registration
-    # visit /accounts/register/ to register
-    # login at /accounts/login/
     url(r'^accounts/', include('registration.backends.simple.urls')),
 ]
