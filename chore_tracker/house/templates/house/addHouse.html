@@ -1,4 +1,6 @@
 {% load staticfiles %}
+{% load crispy_forms_tags %}
+
 <head>
 <link rel="stylesheet" type="text/css" href="{% static 'chore_app/css/bootstrap.min.css' %}"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,15 +36,19 @@
             </div>
         </div>
     </nav>
-    <h1>Add House</h1> 
-    <form method='post' action=''>
-        {% csrf_token %}        
-        {{ form.as_p }}
-        <div class='save'>
-            <input type='submit' class="btn btn-success pull-left" value='Add Housemate'/>
+    <div class="row">
+        <div class="col-xs-8 col-xs-offset-1 col-sm-6 col-sm-offset-2 col-md-4 col-md-offset-1">
+            <h1>Add House</h1>
+            <form method='post' action=''>
+                {% csrf_token %}
+                {{ form|crispy }}
+                <div class='save'>
+                    <input type='submit' class="btn btn-success pull-left" value='Add House'/>
+                </div>
+                <div class='cancel'>
+                    <a href="{% url 'house:house' %}" class="btn btn-danger" role="button">Cancel</a>
+                </div>
+            </form>
         </div>
-        <div class='cancel'>
-            <a href="{% url 'house:house' %}" class="btn btn-danger" role="button">Cancel</a>
-        </div>
-    </form>
+    </div>
 </body>

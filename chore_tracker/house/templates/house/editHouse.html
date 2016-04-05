@@ -1,4 +1,6 @@
 {% load staticfiles %}
+{% load crispy_forms_tags %}
+
 <head>
 <link rel="stylesheet" type="text/css" href="{% static 'chore_app/css/bootstrap.min.css' %}"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,18 +36,22 @@
             </div>
         </div>
     </nav>
-    <h1>Edit House</h1> 
-    <form method='POST' action=''>
-        {% csrf_token %}
-        <label>House name</label></br> 
-        <input type='text' name='house_name' default='None'/></br>
-        <label>Zip code</label></br>
-        <input type='text' name='zip_code'/></br>
-        <div class='save'>
-            <input type='submit' class = "btn btn-success pull-left" value='Save'/>
+    <div class="row">
+        <div class="col-xs-8 col-xs-offset-1 col-sm-6 col-sm-offset-2 col-md-4 col-md-offset-1">
+            <h1>Edit House</h1>
+            <form method='POST' action=''>
+                {% csrf_token %}
+                <label>House name</label></br>
+                <input type='text' name='house_name' default='None'/></br>
+                <label>Zip code</label></br>
+                <input type='text' name='zip_code'/></br>
+                <div class='save'>
+                    <input type='submit' class = "btn btn-success pull-left" value='Save'/>
+                </div>
+                <div class="cancel">
+                    <a href="{% url 'house:house' %}" class="btn btn-danger" role="button">Cancel</a>
+                </div>
+            </form>
         </div>
-        <div class="cancel">
-            <a href="{% url 'house:house' %}" class="btn btn-danger" role="button">Cancel</a>
-        </div>
-    </form>
+    </div>
 </body>
