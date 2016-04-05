@@ -10,7 +10,7 @@
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 
-<title>New Housemate</title>
+<title>New House</title>
 <body>
     <!-- Black navbar header -->
     <nav class="navbar navbar-inverse navbar-static-top">
@@ -38,7 +38,7 @@
     </nav>
     <div class="row">
         <div class="col-xs-8 col-xs-offset-1 col-sm-6 col-sm-offset-2 col-md-4 col-md-offset-1">
-            <h1>Add House</h1>
+            <h1>New House</h1>
             <form method='post' action=''>
                 {% csrf_token %}
                 {{ form|crispy }}
