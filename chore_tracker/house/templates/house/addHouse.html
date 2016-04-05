@@ -8,7 +8,7 @@
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 
-<title>New Housemate</title>
+<title>New House</title>
 <body>
     <!-- Black navbar header -->
     <nav class="navbar navbar-inverse navbar-static-top">
@@ -34,12 +34,12 @@
             </div>
         </div>
     </nav>
-    <h1>Add House</h1> 
+    <h1>New House</h1> 
     <form method='post' action=''>
         {% csrf_token %}        
         {{ form.as_p }}
         <div class='save'>
-            <input type='submit' class="btn btn-success pull-left" value='Add Housemate'/>
+            <input type='submit' class="btn btn-success pull-left" value='Add House'/>
         </div>
         <div class='cancel'>
             <a href="{% url 'house:house' %}" class="btn btn-danger" role="button">Cancel</a>
