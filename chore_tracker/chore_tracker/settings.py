@@ -32,7 +32,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'chore_app.apps.ChoreAppConfig',
-    'house.apps.HouseConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,6 +44,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     ## Registration,
     'registration',
+    'house',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -134,4 +134,4 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = True
 SITE_ID = 1
-LOGIN_REDIRECT_URL = '/chore_app/index/'
+LOGIN_REDIRECT_URL = '/house/'

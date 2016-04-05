@@ -21,11 +21,19 @@ class ChoreForm(forms.Form):
 		]
 
 	dateTimeOptions = {
-	'format': 'mm/dd/yyyy HH:ii P',  #Formats date and time.  
+	'format': 'mm/dd/yyyy HH:ii P',  #Formats date and time. 
+	'autoclose': True, 
 	'showMeridian' : True,   #Shows 12 hour time (AM and PM)
 	}
 
+	widgets = {
+	'datetime': DateTimeWidget(options = dateTimeOptions)
+	}
+
 	chore_title = forms.CharField(max_length = 200)
+
+
+
 	due_date = forms.DateTimeField(widget=DateTimeWidget(bootstrap_version=3, options=dateTimeOptions),
 		input_formats = ['%m/%d/%Y %I:%M %p'])
 	

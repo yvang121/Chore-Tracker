@@ -22,6 +22,13 @@ nav.navbar-inverse {
     margin-bottom: 0px;
 }
 
+.navbar-brand {
+    font-family: 'Segoe UI', 'Calibri', 'Segoe';
+    font-size: 26;
+    font-weight: 300;
+    padding-left: 7px;
+}
+
 td {
     font-size: 16;
 	font-family: inherit, Calibri, Candara, Segoe, 'Sego UI', Optima;
@@ -57,6 +64,14 @@ input[type='submit'] {
 #add-housemate {
     float: right;
     margin-bottom: 10;
+    margin-right: 5;
+}
+
+#add-house {
+    float: right;
+    margin-bottom: 10;
+    margin-top: 20;
+    margin-right: 5;
 }
 
 a.housemate-name {
@@ -65,6 +80,17 @@ a.housemate-name {
     color: green; 
     text-decoration: none;
     font-weight: 300;
+}
+
+a.house-name {
+    font-size: 30;
+    font-family: 'Open sans', 'Segoe UI', 'Calibri';
+    text-decoration: none;
+    font-weight: 300;
+}
+
+#edit-del-btn {
+    margin-bottom: 17;
 }
 
 div.save {
@@ -117,24 +143,26 @@ th.table-header {
 
 #dropdown-overdue {
     padding: 2px;
-    border-radius: 10px;
+    border-radius: 7px;
     font-size: 24;
     text-align: center;
     width: 100%;
     font-family: Georgia, Tahoma, 'Lucida Sans Unicode';
     background-color: #d9534f;
     font-weight: 300;
+    outline: none;
 }
 
 #dropdown-today {
     font-family: 'Open Sans', 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Tahoma, Arial, sans-serif;
     background-color: #54B6FF;
     font-weight: 300;
-    border-radius: 10px;
+    border-radius: 7px;
     font-size: 24;
     text-align: center;
     padding: 0;
     width:100%;
+    outline: none;
 }
 
 #no-chores {
@@ -148,20 +176,22 @@ th.table-header {
     font-family: 'Segoe UI', 'Dejavu Sans', Calibri, Dejavu, Frutiger, Tahoma, Arial, Helvetica, Times;
     background-color: #81C5FF;
     font-weight: 300;
-    border-radius: 10px;
+    border-radius: 7px;
     font-size: 24;
     text-align: center;
     padding: 0;
     width:100%;
+    outline: none;
 }
 
 #dropdown-upcoming {
     font-family: 'Segoe UI', 'Dejavu Sans', Calibri, Dejavu, Frutiger, Tahoma, Arial, Helvetica, Times;
     background-color: #BED1E3;
     font-weight: 300;
-    border-radius: 10px;
+    border-radius: 7px;
     font-size: 24;
     text-align: center;
     padding: 0;
     width:100%;
+    outline: none;
 }

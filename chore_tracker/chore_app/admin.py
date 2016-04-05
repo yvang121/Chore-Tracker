@@ -12,7 +12,7 @@ class ChoreInline(admin.TabularInline):
 
 class HousemateAdmin(admin.ModelAdmin):
 	fieldsets = [
-	(None,		{'fields':['first_name', 'last_name']}),
+	(None,		{'fields':['first_name', 'last_name', 'house']}),
 	('Email information', {'fields':['email'], 'classes':['collapse']}),
 	]
 	inlines = [ChoreInline]

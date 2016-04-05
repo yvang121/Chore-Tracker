@@ -1,10 +1,10 @@
 {% load staticfiles %}
-
 <head>
 <link rel="stylesheet" type="text/css" href="{% static 'chore_app/style.css' %}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'chore_app/css/bootstrap.min.css' %}"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" sizes="16x16" href="{% static 'chore_app/images/icon2.png' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'chore_app/style.css' %}"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
@@ -15,7 +15,7 @@
 	<!-- Black navbar header -->
 	<nav class="navbar navbar-inverse navbar-static-top">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="{% url 'chore_app:index' %}" style="font-family:Cambria"></span> Chore Tracker</a>
+			<a class="navbar-brand" href="{% url 'chore_app:index' house.id %}">&#8592 Back</a>
 			<button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
@@ -26,11 +26,12 @@
                     <li><a href="../accounts/logout/">Log out</a></li>
 					<!-- Settings dropdown menu -->
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="font-family:Cambria">Settings<b class="caret"></b></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings<b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="#">About</a></li>
 							<li><a href="#">Preferences</a></li>
 							<li><a href="#">Help</a></li>
+							<li><a href="/chore_app/accounts/logout/">Log out</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -39,10 +40,10 @@
 	</nav>
 	<div>
 		<div id='name'>
-			<h1>{{housemate.full_name }}</h1>
+			<h1>{{ housemate.full_name }}</h1>
 		</div>
 		<div id='add-chore'>
-			<a href="{% url 'chore_app:addChore' housemate.id %}" class="btn btn-primary" role="button">Add Chore</a>
+			<a href="{% url 'chore_app:addChore' house.id housemate.id %}" class="btn btn-primary" role="button">Add Chore</a>
 		</div>
 		{% if overdue_set %} <!-- Overdue Chore Table -->
 			<div>
@@ -52,28 +53,22 @@
 				<div id='overdue' class='collapse in'>
 					<table class="table table-hover">
 						<tr>
-							<th class="table-header">Status</th>
 							<th class="table-header">Chore Title</th>
 							<th class="table-header">Due Date</th>
 							<th class="table-header"></th>
 						</tr>
 						{% for chore in overdue_set %}
 						{% cycle '<tr>' '' %}
-							{% if chore.is_done %}
-								<td>
-									<form method='POST' action=''>
-									{% csrf_token %}
-									<input type="checkbox" style="position: relative; left: 10px;" name='status' value='is_done' checked />
-									</form>
-								</td>
-								<td><strike> {{ chore.chore_title }} </strike></td>
-								<td><strike> {{ chore.due_date }} </strike></td>
-							{% else %}
-								<td><input type="checkbox" style="position: relative; left: 10px;" name='status'/></td>
-								<td> {{ chore.chore_title}} </td>
-								<td> {{ chore.due_date }} </td>
-							{% endif %}
-							<td style="text-align: center;"><a href="{% url 'chore_app:deleteChore' housemate.id chore.id %}" class="btn btn-danger" role="button"> 
+							<td> {{ chore.chore_title}} </td>
+							<td> {{ chore.due_date }} </td>
+							<td class='delete-btn'><a href="{% url 'chore_app:deleteChore' house.id housemate.id chore.id %}" class="btn btn-danger" role="button" onclick='clicked(event)'>
+								<script>
+									function clicked(e) {
+									    if(!confirm('Are you sure you would like to delete this chore?')) {
+									    	e.preventDefault();
+									    }
+									}
+								</script> 
 								<span class="glyphicon glyphicon-trash"></span> </a>
 							</td>
 						{% cycle '</tr>' ''%}
@@ -90,28 +85,22 @@
 				<div id='today' class='collapse in'>
 					<table class="table table-hover">
 						<tr>
-							<th class="table-header">Status</th>
 							<th class="table-header">Chore Title</th>
 							<th class="table-header">Due Date</th>
 							<th class="table-header"></th>
 						</tr>		
 						{% for chore in today_set %}
 							{% cycle '<tr>' '' %}
-								{% if chore.is_done %}
-									<td>
-										<form method='POST' action=''>
-										{% csrf_token %}
-										<input type="checkbox" style="position: relative; left: 10px;" name='status' value='is_done' checked />
-										</form>
-									</td>
-									<td><strike> {{ chore.chore_title }} </strike></td>
-									<td><strike> {{ chore.due_date }} </strike></td>
-								{% else %}
-									<td><input type="checkbox" style="position: relative; left: 10px;" name='status'/></td>
-									<td> {{ chore.chore_title}} </td>
-									<td> {{ chore.due_date }} </td>
-								{% endif %}
-								<td class='delete-btn'><a href="{% url 'chore_app:deleteChore' housemate.id chore.id %}" class="btn btn-danger" role="button"> 
+								<td> {{ chore.chore_title}} </td>
+								<td> {{ chore.due_date }} </td>
+								<td class='delete-btn'><a href="{% url 'chore_app:deleteChore' house.id housemate.id chore.id %}" class="btn btn-danger" role="button" onclick='clicked(event)'> 
+									<script>
+										function clicked(e) {
+										    if(!confirm('Are you sure you would like to delete this chore?')) {
+										    	e.preventDefault();
+										    }
+										}
+									</script> 
 									<span class="glyphicon glyphicon-trash"></span> </a>
 								</td>
 							{% cycle '</tr>' ''%}
@@ -137,32 +126,25 @@
 				<div id='tomorrow' class='collapse'>
 					<table class="table table-hover">
 						<tr>
-							<th class="table-header">Status</th>
 							<th class="table-header">Chore Title</th>
 							<th class="table-header">Due Date</th>
 							<th class="table-header"></th>
-						</tr>
-									
+						</tr>			
 						{% for chore in tomorrow_set %}
 							{% cycle '<tr>' '' %}
-								{% if chore.is_done %}
-									<td>
-										<form method='POST' action=''>
-										{% csrf_token %}
-										<input type="checkbox" style="position: relative; left: 10px;" name='status' value='is_done' checked />
-										</form>
-									</td>
-									<td><strike> {{ chore.chore_title }} </strike></td>
-									<td><strike> {{ chore.due_date }} </strike></td>
-								{% else %}
-									<td><input type="checkbox" style="position: relative; left: 10px;" name='status'/></td>
-									<td> {{ chore.chore_title}} </td>
-									<td> {{ chore.due_date }} </td>
-								{% endif %}
-								<td class='delete-btn'><a href="{% url 'chore_app:deleteChore' housemate.id chore.id %}" class="btn btn-danger" role="button"> 
+								<td> {{ chore.chore_title}} </td>
+								<td> {{ chore.due_date }} </td>
+								<td class='delete-btn'><a href="{% url 'chore_app:deleteChore' house.id housemate.id chore.id %}" class="btn btn-danger" role="button" onclick='clicked(event)'>
+									<script>
+										function clicked(e) {
+										    if(!confirm('Are you sure you would like to delete this chore?')) {
+										    	e.preventDefault();
+										    }
+										}
+									</script> 
 									<span class="glyphicon glyphicon-trash"></span> </a>
 								</td>
-							{% cycle '</tr>' ''%}
+							{% cycle '</tr>' '' %}
 						{% endfor %}
 					</table>
 				</div>
@@ -176,28 +158,22 @@
 				<div id='upcoming' class='collapse'>
 					<table class="table table-hover">
 						<tr>
-							<th class="table-header">Status</th>
 							<th class="table-header">Chore Title</th>
 							<th class="table-header">Due Date</th>
 							<th class="table-header"></th>
 						</tr>			
 						{% for chore in upcoming_set %}
 						{% cycle '<tr>' '' %}
-							{% if chore.is_done %}
-								<td>
-									<form method='POST' action=''>
-									{% csrf_token %}
-									<input type="checkbox" style="position: relative; left: 10px;" name='status' value='is_done' checked />
-									</form>
-								</td>
-								<td><strike> {{ chore.chore_title }} </strike></td>
-								<td><strike> {{ chore.due_date }} </strike></td>
-							{% else %}
-								<td><input type="checkbox" style="position: relative; left: 10px;" name='status'/></td>
-								<td> {{ chore.chore_title}} </td>
-								<td> {{ chore.due_date }} </td>
-							{% endif %}
-							<td class='delete-btn'><a href="{% url 'chore_app:deleteChore' housemate.id chore.id %}" class="btn btn-danger" role="button"> 
+							<td> {{ chore.chore_title}} </td>
+							<td> {{ chore.due_date }} </td>
+							<td class='delete-btn'><a href="{% url 'chore_app:deleteChore' house.id housemate.id chore.id %}" class="btn btn-danger" role="button" onclick='clicked(event)'>
+								<script>
+									function clicked(e) {
+									    if(!confirm('Are you sure you would like to delete this chore?')) {
+									    	e.preventDefault();
+									    }
+									}
+								</script> 
 								<span class="glyphicon glyphicon-trash"></span> </a>
 							</td>
 						{% cycle '</tr>' ''%}
