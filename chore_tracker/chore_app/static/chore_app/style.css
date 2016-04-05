@@ -64,6 +64,7 @@ input[type='submit'] {
 #add-housemate {
     float: right;
     margin-bottom: 10;
+    margin-right: 5;
 }
 
 #add-house {
@@ -142,24 +143,26 @@ th.table-header {
 
 #dropdown-overdue {
     padding: 2px;
-    border-radius: 10px;
+    border-radius: 7px;
     font-size: 24;
     text-align: center;
     width: 100%;
     font-family: Georgia, Tahoma, 'Lucida Sans Unicode';
     background-color: #d9534f;
     font-weight: 300;
+    outline: none;
 }
 
 #dropdown-today {
     font-family: 'Open Sans', 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Tahoma, Arial, sans-serif;
     background-color: #54B6FF;
     font-weight: 300;
-    border-radius: 10px;
+    border-radius: 7px;
     font-size: 24;
     text-align: center;
     padding: 0;
     width:100%;
+    outline: none;
 }
 
 #no-chores {
@@ -173,20 +176,22 @@ th.table-header {
     font-family: 'Segoe UI', 'Dejavu Sans', Calibri, Dejavu, Frutiger, Tahoma, Arial, Helvetica, Times;
     background-color: #81C5FF;
     font-weight: 300;
-    border-radius: 10px;
+    border-radius: 7px;
     font-size: 24;
     text-align: center;
     padding: 0;
     width:100%;
+    outline: none;
 }
 
 #dropdown-upcoming {
     font-family: 'Segoe UI', 'Dejavu Sans', Calibri, Dejavu, Frutiger, Tahoma, Arial, Helvetica, Times;
     background-color: #BED1E3;
     font-weight: 300;
-    border-radius: 10px;
+    border-radius: 7px;
     font-size: 24;
     text-align: center;
     padding: 0;
     width:100%;
+    outline: none;
 }
