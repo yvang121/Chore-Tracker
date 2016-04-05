@@ -22,7 +22,7 @@ def addHouse(request):
     if request.method == 'POST':
         form = HouseForm(request.POST)
         if form.is_valid():
-            house_name = form.cleaned_data['house_name'].capitalize()
+            house_name = form.cleaned_data['house_name'].title()
             zip_code = form.cleaned_data['zip_code']
             post = House.house_manager.create(house_name=house_name, zip_code=zip_code)
             return HttpResponseRedirect('/house/')
@@ -38,10 +38,10 @@ def editHouse(request, house_id):
     house = get_object_or_404(House, pk=house_id)
     if request.method == 'POST':
         if 'house_name' in request.POST and request.POST['house_name'] != '':
-            house.house_name = request.POST['house_name'].capitalize()
+            house.house_name = request.POST['house_name'].title()
         if 'zip_code' in request.POST and request.POST['zip_code'] != '':
-            house.zip_code = request.POST['zip_code'].capitalize()
-        housemate.save()
+            house.zip_code = request.POST['zip_code'].title()
+        house.save()
         return HttpResponseRedirect('/house')
     return render(request, 'house/editHouse.html')
 

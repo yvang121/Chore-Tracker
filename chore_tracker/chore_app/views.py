@@ -88,8 +88,8 @@ def addHousemate(request, house_id):
 	if request.method == 'POST':
 		form = HousemateForm(request.POST)
 		if form.is_valid():
-			first_name = form.cleaned_data['first_name'].capitalize()
-			last_name = form.cleaned_data['last_name'].capitalize()
+			first_name = form.cleaned_data['first_name'].title()
+			last_name = form.cleaned_data['last_name'].title()
 			email = form.cleaned_data['email']
 			post = Housemate.person.create(house=house, first_name=first_name, last_name=last_name, email=email)
 			return HttpResponseRedirect(reverse('chore_app:index', args=[house_id]))
@@ -110,9 +110,9 @@ def editInfo(request, house_id, housemate_id):
 	housemate = get_object_or_404(Housemate, pk=housemate_id)
 	if request.method == 'POST':
 		if 'first_name' in request.POST and request.POST['first_name'] != '':
-			housemate.first_name = request.POST['first_name'].capitalize()
+			housemate.first_name = request.POST['first_name'].title()
 		if 'last_name' in request.POST and request.POST['last_name'] != '':
-			housemate.last_name = request.POST['last_name'].capitalize()
+			housemate.last_name = request.POST['last_name'].title()
 		if 'email' in request.POST and request.POST['email'] != '':
 			housemate.email = request.POST['email']
 		housemate.save()
