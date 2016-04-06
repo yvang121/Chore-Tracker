@@ -27,7 +27,7 @@ def home(request):
 		instance.full_name = username
 		instance.save()
 		context = {
-			"title": "Thank you"
+			"title": "Thank you",
 		}
 	return render(request, "chore_app/home.html", context)
 
@@ -35,7 +35,9 @@ def index(request, house_id):
 	'''Renders the html page that views the housemates for a given house'''
 	house = get_object_or_404(House, pk=house_id)
 	housemates = house.housemate_set.all()
-	context = {'housmates': housemates, 'house': house,
+	context = {
+	'housmates': housemates, 
+	'house': house,
 	}
 	return render(request, 'chore_app/index.html', context)
 
