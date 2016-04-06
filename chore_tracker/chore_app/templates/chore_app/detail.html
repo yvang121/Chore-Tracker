@@ -112,7 +112,7 @@
 				<div>
 					<button id='dropdown-today' type='button' class='btn' data-toggle='collapse' data-target='#today'>TODAY</button>
 				</div>
-				<div id='today' class='collapse'>
+				<div id='today' class='collapse in'>
 					<p id='no-chores'>No chores for today! <span class='glyphicon glyphicon-check'></span></p>
 				</div>
 			</div>
@@ -122,7 +122,7 @@
 				<div>
 					<button id='dropdown-tomorrow' type='button' class='btn' data-toggle='collapse' data-target='#tomorrow'>TOMORROW</button>
 				</div>
-				<div id='tomorrow' class='collapse'>
+				<div id='tomorrow' class='collapse in'>
 					<table class="table table-hover">
 						<tr>
 							<th class="table-header">Chore Title</th>
@@ -148,13 +148,22 @@
 					</table>
 				</div>
 			</div>
+		{% else %}
+			<div>
+				<div>
+					<button id='dropdown-tomorrow' type='button' class='btn' data-toggle='collapse' data-target='#tomorrow'>TOMORROW</button>
+				</div>
+				<div id='tomorrow' class='collapse in'>
+					<p id='no-chores'>No chores for tomorrow! <span class='glyphicon glyphicon-check'></span></p>
+				</div>
+			</div>
 		{% endif %}
 		{% if upcoming_set %} <!-- Upcoming Chore Table -->
 			<div>
 				<div>
 					<button id='dropdown-upcoming' type='button' class='btn' data-toggle='collapse' data-target='#upcoming'>UPCOMING</button>
 				</div>
-				<div id='upcoming' class='collapse'>
+				<div id='upcoming' class='collapse in'>
 					<table class="table table-hover">
 						<tr>
 							<th class="table-header">Chore Title</th>
@@ -178,6 +187,15 @@
 						{% cycle '</tr>' ''%}
 						{% endfor %}
 					</table>
+				</div>
+			</div>
+		{% else %}
+			<div>
+				<div>
+					<button id='dropdown-upcoming' type='button' class='btn' data-toggle='collapse' data-target='#upcoming'>UPCOMING</button>
+				</div>
+				<div id='upcoming' class='collapse in'>
+					<p id='no-chores'>No chores upcoming chores! <span class='glyphicon glyphicon-check'></span></p>
 				</div>
 			</div>
 		{% endif %}
