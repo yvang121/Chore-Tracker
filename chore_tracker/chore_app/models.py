@@ -44,3 +44,16 @@ class Chore(models.Model):
 
 	class Meta:
 		ordering = ['due_date']
+
+class SignUp(models.Model):
+	username = models.CharField(max_length = 120)
+	email = models.EmailField()
+	password1 = models.CharField(max_length = 120)
+	password2 = models.CharField(max_length = 120)
+
+	def __str__(self):
+		return self.email
+
+class Login(models.Model):
+	username = models.CharField(max_length=120)
+	password = models.CharField(max_length=120)
