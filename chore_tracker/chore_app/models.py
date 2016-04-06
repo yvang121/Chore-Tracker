@@ -25,6 +25,9 @@ class Housemate(models.Model):
 
 	full_name = property(__str__)
 
+	class Meta:
+		ordering = ['last_name']
+
 
 class Chore(models.Model):
 	'''Chore dependent entity that is linked to a Housemate entity.'''
