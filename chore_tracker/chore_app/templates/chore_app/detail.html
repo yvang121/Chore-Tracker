@@ -15,7 +15,7 @@
 	<!-- Black navbar header -->
 	<nav class="navbar navbar-inverse navbar-static-top">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="{% url 'chore_app:index' house.id %}">&#8592 Back</a>
+			<a class="navbar-brand" href="{% url 'chore_app:index' house.id %}">ChoreTracker</a>
 			<button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
@@ -47,7 +47,7 @@
 		{% if overdue_set %} <!-- Overdue Chore Table -->
 			<div>
 				<div>
-					<button id='dropdown-overdue' type='button' class='btn' data-toggle='collapse' data-target='#overdue'>OVERDUE</button>
+					<button id='dropdown-overdue' type='button' class='btn' data-toggle='collapse' data-target='#overdue'><span class="glyphicon glyphicon-triangle-right"></span>OVERDUE </a></button>
 				</div>
 				<div id='overdue' class='collapse in'>
 					<table class="table table-hover">
@@ -68,7 +68,7 @@
 									    }
 									}
 								</script> 
-								<span class="glyphicon glyphicon-trash"></span> </a>
+								<span class="glyphicon glyphicon-remove"></span> </a>
 							</td>
 						{% cycle '</tr>' ''%}
 						{% endfor %}
@@ -79,7 +79,7 @@
 		{% if today_set %} <!-- Today Chore Table -->
 			<div>
 				<div>
-					<button id='dropdown-today' type='button' class='btn collapsed' data-toggle='collapse' data-target='#today'>TODAY</button>
+					<button id='dropdown-today' type='button' class='btn collapsed' data-toggle='collapse' data-target='#today'><span class="glyphicon glyphicon-triangle-right"></span>TODAY</button>
 				</div>
 				<div id='today' class='collapse in'>
 					<table class="table table-hover">
@@ -100,7 +100,7 @@
 										    }
 										}
 									</script> 
-									<span class="glyphicon glyphicon-trash"></span> </a>
+									<span class="glyphicon glyphicon-remove"></span> </a>
 								</td>
 							{% cycle '</tr>' ''%}
 						{% endfor %}
@@ -110,9 +110,9 @@
 		{% else %}
 			<div>
 				<div>
-					<button id='dropdown-today' type='button' class='btn' data-toggle='collapse' data-target='#today'>TODAY</button>
+					<button id='dropdown-today' type='button' class='btn' data-toggle='collapse' data-target='#today'><span class="glyphicon glyphicon-triangle-right"></span>TODAY</button>
 				</div>
-				<div id='today' class='collapse'>
+				<div id='today' class='collapse in'>
 					<p id='no-chores'>No chores for today! <span class='glyphicon glyphicon-check'></span></p>
 				</div>
 			</div>
@@ -120,9 +120,9 @@
 		{% if tomorrow_set %} <!-- Tomorrow Chore Table -->
 			<div>
 				<div>
-					<button id='dropdown-tomorrow' type='button' class='btn' data-toggle='collapse' data-target='#tomorrow'>TOMORROW</button>
+					<button id='dropdown-tomorrow' type='button' class='btn' data-toggle='collapse' data-target='#tomorrow'><span class="glyphicon glyphicon-triangle-right"></span>TOMORROW</button>
 				</div>
-				<div id='tomorrow' class='collapse'>
+				<div id='tomorrow' class='collapse in'>
 					<table class="table table-hover">
 						<tr>
 							<th class="table-header">Chore Title</th>
@@ -141,20 +141,29 @@
 										    }
 										}
 									</script> 
-									<span class="glyphicon glyphicon-trash"></span> </a>
+									<span class="glyphicon glyphicon-remove"></span> </a>
 								</td>
 							{% cycle '</tr>' '' %}
 						{% endfor %}
 					</table>
 				</div>
 			</div>
+		{% else %}
+			<div>
+				<div>
+					<button id='dropdown-tomorrow' type='button' class='btn' data-toggle='collapse' data-target='#tomorrow'><span class="glyphicon glyphicon-triangle-right"></span>TOMORROW</button>
+				</div>
+				<div id='tomorrow' class='collapse in'>
+					<p id='no-chores'>No chores for tomorrow! <span class='glyphicon glyphicon-check'></span></p>
+				</div>
+			</div>
 		{% endif %}
 		{% if upcoming_set %} <!-- Upcoming Chore Table -->
 			<div>
 				<div>
-					<button id='dropdown-upcoming' type='button' class='btn' data-toggle='collapse' data-target='#upcoming'>UPCOMING</button>
+					<button id='dropdown-upcoming' type='button' class='btn' data-toggle='collapse' data-target='#upcoming'><span class="glyphicon glyphicon-triangle-right"></span>UPCOMING</button>
 				</div>
-				<div id='upcoming' class='collapse'>
+				<div id='upcoming' class='collapse in'>
 					<table class="table table-hover">
 						<tr>
 							<th class="table-header">Chore Title</th>
@@ -173,11 +182,20 @@
 									    }
 									}
 								</script> 
-								<span class="glyphicon glyphicon-trash"></span> </a>
+								<span class="glyphicon glyphicon-remove"></span> </a>
 							</td>
 						{% cycle '</tr>' ''%}
 						{% endfor %}
 					</table>
+				</div>
+			</div>
+		{% else %}
+			<div>
+				<div>
+					<button id='dropdown-upcoming' type='button' class='btn' data-toggle='collapse' data-target='#upcoming'><span class="glyphicon glyphicon-triangle-right"></span>UPCOMING</button>
+				</div>
+				<div id='upcoming' class='collapse in'>
+					<p id='no-chores'>No upcoming chores! <span class='glyphicon glyphicon-check'></span></p>
 				</div>
 			</div>
 		{% endif %}
