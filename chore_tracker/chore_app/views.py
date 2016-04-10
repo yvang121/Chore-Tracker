@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse, Http404
+from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.views import generic
 from django.utils import timezone 
@@ -10,7 +11,8 @@ from .forms import ChoreForm, HousemateForm, LogInForm, SignUpForm
 from .models import Housemate, Chore
 from house.models import House
 
-# Regsitration
+
+# Registration
 def home(request):
 	title = 'Welcome'
 	form = LogInForm(request.POST or None)
@@ -31,6 +33,7 @@ def home(request):
 		}
 	return render(request, "chore_app/home.html", context)
 
+@login_required()
 def index(request, house_id):
 	'''Renders the html page that views the housemates for a given house'''
 	house = get_object_or_404(House, pk=house_id)
@@ -41,6 +44,7 @@ def index(request, house_id):
 	}
 	return render(request, 'chore_app/index.html', context)
 
+@login_required()
 def detail(request, house_id, housemate_id):
 	'''Renders an HTML page to view the details for a housemate given a
 	housemate ID'''
@@ -63,6 +67,7 @@ def detail(request, house_id, housemate_id):
 	'overdue_set': overdue_set, 'upcoming_set': upcoming_set, 'house': house,}
 	return render(request, 'chore_app/detail.html', context)
 
+@login_required()
 def addChore(request, house_id, housemate_id):
 	'''Creates a chore data instance for a given housemate id'''
 	house = get_object_or_404(House, pk=house_id)
@@ -83,6 +88,7 @@ def addChore(request, house_id, housemate_id):
     }
 	return render(request, 'chore_app/addChore.html', context)
 
+@login_required()
 def addHousemate(request, house_id):
 	'''Creates a housemate instance'''
 	house = get_object_or_404(House, pk=house_id)
@@ -99,6 +105,7 @@ def addHousemate(request, house_id):
     }
 	return render(request, 'chore_app/addHousemate.html', context)
 
+@login_required()
 def deleteChore(request, house_id, housemate_id, chore_id):
 	'''Takes a chore_id to delete chore, that belongs to a housemate'''
 	house = get_object_or_404(House, pk=house_id)
@@ -106,6 +113,7 @@ def deleteChore(request, house_id, housemate_id, chore_id):
 	instance = housemate.chore_set.filter(pk=chore_id).delete()
 	return HttpResponseRedirect(reverse('chore_app:detail', args=[house_id, housemate_id]))
 
+@login_required()
 def editInfo(request, house_id, housemate_id):
 	'''Takes an Http request, and a housemate id to edit housemate info'''
 	house = get_object_or_404(House, pk=house_id)
@@ -125,6 +133,7 @@ def editInfo(request, house_id, housemate_id):
 	}
 	return render(request, 'chore_app/editInfo.html', context)
 
+@login_required()
 def deleteHousemate(request, house_id, housemate_id):
 	'''Deletes a housemate, given housemate id'''
 	house = get_object_or_404(House, pk=house_id)

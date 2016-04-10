@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse, Http404
+from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.views import generic
 from django.utils import timezone
@@ -7,16 +8,20 @@ from datetime import timedelta
 from .forms import HouseForm
 from .models import House
 
+
+
 # Create your views here.
+
 class HouseView(generic.ListView):
 	template_name = 'house/house.html'
 	model = House
 	context_object_name = 'houses'
-	
+
 	def get_queryset(self):
 		'''Return the most recent by last name'''
 		return House.house_manager.order_by('house_name')
 
+@login_required()
 def addHouse(request):
     form = HouseForm(request.POST or None)
     if request.method == 'POST':
@@ -30,10 +35,12 @@ def addHouse(request):
     }
     return render(request, 'house/addHouse.html', context)
 
+@login_required()
 def deleteHouse(request, house_id):
     house = get_object_or_404(House, pk=house_id).delete()
     return HttpResponseRedirect('/house')
 
+@login_required()
 def editHouse(request, house_id):
     house = get_object_or_404(House, pk=house_id)
     if request.method == 'POST':
