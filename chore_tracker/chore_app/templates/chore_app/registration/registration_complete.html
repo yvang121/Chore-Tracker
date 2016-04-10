@@ -1,6 +1,15 @@
 {% extends "base.html" %}
 {% load i18n %}
 
+{% block navbar %}
+    <ul class="nav navbar-nav navbar-right">
+{#        <li class="active"><a href="./">Static top <span class="sr-only">(current)</span></a></li>#}
+        <li><a href="../login/">Log in</a></li>
+    </ul>
+
+{% endblock %}
+
 {% block content %}
 <p>{% trans "You are now registered." %}</p>
+    <p> <a href="">Log in now!</a></p>
 {% endblock %}
