@@ -1,41 +1,9 @@
+{% extends "navbar.html" %}
 {% load staticfiles %}
-<head>
-<link rel="stylesheet" type="text/css" href="{% static 'chore_app/css/bootstrap.min.css' %}"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="{% static 'chore_app/style.css' %}"/>
-<link rel="icon" type="image/png" sizes="16x16" href="{% static 'chore_app/images/icon2.png' %}">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+{% block content %}
 {{ form.media }}
-<head>
-
-
 <title>New Chore</title>
 <body>
-	<!-- Black navbar header -->
-	<nav class="navbar navbar-inverse navbar-static-top">
-		<div class="container-fluid">
-			<a class="navbar-brand" href="{% url 'chore_app:index' house.id %}">Chore Tracker</a>
-			<button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<div class="collapse navbar-collapse navHeaderCollapse">
-				<ul class="nav navbar-nav navbar-right">
-					<!-- Settings dropdown menu -->
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ user.username }}<b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Profile</a></li>
-							<li><a href="#">Preferences</a></li>
-							<li><a href="#">Help</a></li>
-						</ul>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
 	<div class="add">
 		<h1>New Chore</h1>
 	</div> 
@@ -50,3 +18,4 @@
 		</div>
 	</form>
 </body>
+{% endblock %}
