@@ -11,8 +11,8 @@ from .models import House
 
 
 # Create your views here.
-@login_required()
-def HouseView(request):
+
+class HouseView(generic.ListView):
 	template_name = 'house/house.html'
 	model = House
 	context_object_name = 'houses'
