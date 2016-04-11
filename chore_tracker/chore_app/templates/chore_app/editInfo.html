@@ -7,11 +7,11 @@
 	<form method='POST' action=''>
 		{% csrf_token %}
 		<label>First name</label></br> 
-		<input type='text' name='first_name' default='None'/></br>
+		<input type='text' name='first_name' value='{{ housemate.first_name }}'/></br>
 		<label>Last name</label></br>
-		<input type='text' name='last_name'/></br>
+		<input type='text' name='last_name' value='{{ housemate.last_name }}'/></br>
 		<label>Email</label></br>
-		<input type='text' name='email'/></br>
+		<input type='text' name='email' value='{{ housemate.email }}'/></br>
 		<div class='save'>
 			<input type='submit' class = "btn btn-success pull-left" value='Save'/>
 		</div>
