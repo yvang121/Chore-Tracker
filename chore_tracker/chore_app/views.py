@@ -119,11 +119,11 @@ def editInfo(request, house_id, housemate_id):
 	house = get_object_or_404(House, pk=house_id)
 	housemate = get_object_or_404(Housemate, pk=housemate_id)
 	if request.method == 'POST':
-		if 'first_name' in request.POST and request.POST['first_name'] != '':
+		if 'first_name' in request.POST:
 			housemate.first_name = request.POST['first_name'].title()
-		if 'last_name' in request.POST and request.POST['last_name'] != '':
+		if 'last_name' in request.POST:
 			housemate.last_name = request.POST['last_name'].title()
-		if 'email' in request.POST and request.POST['email'] != '':
+		if 'email' in request.POST:
 			housemate.email = request.POST['email']
 		housemate.save()
 		return HttpResponseRedirect(reverse('chore_app:index', args=[house_id]))
