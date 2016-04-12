@@ -23,7 +23,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ user.username }}<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li class='separator'><a href="{% comment %}{% url 'chore_app:detail' house.id housemate.id %}{% endcomment %}">My Home</a></li>
+                            <li class='separator'><a href="{% comment %}{% url 'chore_app:detail' house.id housemate.id %}{% endcomment %}">My Chore Summary</a></li>
                             <li class='separator'><a href="{% url 'chore_app:index' house.id %}">My House</a></li>
                             <li><a href="/accounts/logout/">Log out</a></li>
                         </ul>
