@@ -83,14 +83,12 @@ a.housemate-name {
     font-size: 30; 
     font-family: Cambria; 
     color: green; 
-    text-decoration: none;
     font-weight: 300;
 }
 
 a.house-name {
     font-size: 30;
     font-family: 'Open sans', 'Segoe UI', 'Calibri';
-    text-decoration: none;
     font-weight: 300;
 }
 
