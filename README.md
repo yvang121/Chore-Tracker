@@ -4,11 +4,6 @@ Hello and welcome to the Chore Tracker web application repository!
 The Chore Tracker web application stores and keeps track of all the chores within a household
 that need to be done. Features include adding or removing housemates from a list of housemates,
 addition or deletion of chores for a housemate and editing housemate information (first names, last names, email).
-### Features to come:
-* Login page
-* Create username/password registration
-* Logout capabilities
-* `House` data model entity
 
 ### Steps to install and use the Django API:
 Skip steps as needed if you know you've already completed them i.e. already have Python 3.4 installed.

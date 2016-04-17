@@ -1,54 +1,8 @@
+{% extends "navbar.html" %}
 {% load staticfiles %}
-<head>
-<link rel="stylesheet" type="text/css" href="{% static 'chore_app/css/bootstrap.min.css' %}"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="{% static 'chore_app/style.css' %}"/>
-<link rel="icon" type="image/png" sizes="16x16" href="{% static 'chore_app/images/icon2.png' %}">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-</head>
-
-
+{% block content %}
 <title>House details</title>
 <body>
-	<!-- Black navbar header -->
-	<nav class="navbar navbar-inverse navbar-static-top">
-		<div class="container-fluid">
-			<a class="navbar-brand" href="{% url 'house:house' %}">Chore Tracker</a>
-			<button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<div class="collapse navbar-collapse navHeaderCollapse">
-				<ul class="nav navbar-nav navbar-right">
-					<!-- Settings dropdown menu -->
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ user.username }}<b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Profile</a></li>
-							<li><a href="#">Preferences</a></li>
-							<li><a href="#">Help</a></li>
-							<li><a href="/accounts/logout/">Log out</a></li>
-						</ul>
-					</li>
-				</ul>
-                <!-- Login form-->
-                {% if not request.user.is_authenticated %}
-                    <form class="navbar-form navbar-right" method="POST" action=""/>{% csrf_token %}
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="username" placeholder="Username"/>
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" name="password" placeholder="Password"/>
-                    </div>
-                    <button type="submit" class="btn btn-default">Login</button>
-                    </form>
-                {% endif %}
-            </div>
-        </div>
-	</nav>
-	<!-- List all of the names in the household of housemates -->
     <div>
 	<div id='add-housemate'>
 		<a href="{% url 'chore_app:addHousemate' house.id %}" class="btn btn-primary" role="button">Add Housemate</a>
@@ -83,3 +37,4 @@
 	{% endif %}
     </div>
 </body>
+{% endblock %}

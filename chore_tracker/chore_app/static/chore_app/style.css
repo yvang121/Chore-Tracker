@@ -29,6 +29,11 @@ nav.navbar-inverse {
     padding-left: 7px;
 }
 
+.separator {
+    width:100%; 
+    border-bottom: 1px solid #000000;
+ }
+
 td {
     font-size: 16;
 	font-family: inherit, Calibri, Candara, Segoe, 'Sego UI', Optima;

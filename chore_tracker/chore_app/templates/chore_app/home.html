@@ -8,6 +8,7 @@
         {% if request.user.is_authenticated %}
             <li><a href="../accounts/logout/">Log out</a> </li>
         {% else %}
+            <li><a href="../accounts/login/">Login</a></li>
             <li><a href="../accounts/register/">Register</a></li>
         {% endif %}
     </ul>
@@ -19,25 +20,6 @@
     <div class="jumbotron">
         <h1>Welcome to Chore Tracker!</h1>
         <p>This app is so helpful and you can't miss it.</p>
-    </div>
-
-    <div class="row">
-        <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
-            <h1>Login</h1>
-            <form method="post" action="">
-                {% csrf_token %}
-                {{ form|crispy }}
-
-                <input class="btn btn-primary" type="submit" value="{% trans 'Log in' %}" />
-                <input type="hidden" name="next" value="{{ next }}" />
-                <p></p>
-                <p><a href="../register/">Create a New Account</a></p>
-                <p><a href="">Reset Password</a></p>
-            </form>
-
-{#            <p>{% trans "Forgot password" %}? <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}</a>!</p>#}
-{#            <p>{% trans "Not member" %}? <a href="{% url 'registration_register' %}">{% trans "Register" %}</a>!</p>#}
-        </div>
     </div>
 
 {% endblock %}

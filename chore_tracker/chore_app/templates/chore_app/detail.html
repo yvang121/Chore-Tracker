@@ -1,45 +1,8 @@
+{% extends "navbar.html" %}
 {% load staticfiles %}
-<head>
-<link rel="stylesheet" type="text/css" href="{% static 'chore_app/style.css' %}"/>
-<link rel="stylesheet" type="text/css" href="{% static 'chore_app/css/bootstrap.min.css' %}"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" sizes="16x16" href="{% static 'chore_app/images/icon2.png' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'chore_app/style.css' %}"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-</head>
-
-<!-- set the heading to the housemate's first name, from database -->
-<title>Details</title>
+{% block content %}
 <body>
-	<!-- Black navbar header -->
-	<nav class="navbar navbar-inverse navbar-static-top">
-		<div class="container-fluid">
-			<a class="navbar-brand" href="{% url 'chore_app:index' house.id %}">ChoreTracker</a>
-			<button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<div class="collapse navbar-collapse navHeaderCollapse">
-				<ul class="nav navbar-nav navbar-right">
-					<!-- Settings dropdown menu -->
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ user.username }}<b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="{% url 'chore_app:detail' house.id housemate.id %}">My Home</a></li>
-							<li><option disabled role=separator>______________________</li>
-							<li><a href="#">Profile</a></li>
-							<li><a href="#">Preferences</a></li>
-							<li><a href="#">Help</a></li>
-							<li><option disabled role=separator>______________________</li>
-							<li><a href="/accounts/logout/">Log out</a></li>
-						</ul>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+	<title>Details</title>
 	<div>
 		<div id='name'>
 			<h1>{{ housemate.full_name }}</h1>
@@ -50,7 +13,8 @@
 		{% if overdue_set %} <!-- Overdue Chore Table -->
 			<div>
 				<div>
-					<button id='dropdown-overdue' type='button' class='btn' data-toggle='collapse' data-target='#overdue'><span class="glyphicon glyphicon-triangle-right"></span>OVERDUE </a></button>
+					<button id='dropdown-overdue' type='button' class='btn' data-toggle='collapse' data-target='#overdue'>OVERDUE 
+						<b class="caret"></b></button>
 				</div>
 				<div id='overdue' class='collapse in'>
 					<table class="table table-hover">
@@ -82,7 +46,8 @@
 		{% if today_set %} <!-- Today Chore Table -->
 			<div>
 				<div>
-					<button id='dropdown-today' type='button' class='btn collapsed' data-toggle='collapse' data-target='#today'><span class="glyphicon glyphicon-triangle-right"></span>TODAY</button>
+					<button id='dropdown-today' type='button' class='btn collapsed' data-toggle='collapse' data-target='#today'>TODAY  
+						<b class="caret"></b></button>
 				</div>
 				<div id='today' class='collapse in'>
 					<table class="table table-hover">
@@ -113,17 +78,19 @@
 		{% else %}
 			<div>
 				<div>
-					<button id='dropdown-today' type='button' class='btn' data-toggle='collapse' data-target='#today'><span class="glyphicon glyphicon-triangle-right"></span>TODAY</button>
+					<button id='dropdown-today' type='button' class='btn' data-toggle='collapse' data-target='#today'>TODAY
+						<b class="caret"></b></button>
 				</div>
 				<div id='today' class='collapse in'>
-					<p id='no-chores'>No chores for today! <span class='glyphicon glyphicon-check'></span></p>
+					<p id='no-chores'>No chores for today</p>
 				</div>
 			</div>
 		{% endif %}
 		{% if tomorrow_set %} <!-- Tomorrow Chore Table -->
 			<div>
 				<div>
-					<button id='dropdown-tomorrow' type='button' class='btn' data-toggle='collapse' data-target='#tomorrow'><span class="glyphicon glyphicon-triangle-right"></span>TOMORROW</button>
+					<button id='dropdown-tomorrow' type='button' class='btn' data-toggle='collapse' data-target='#tomorrow'>TOMORROW
+						<b class="caret"></b></button>
 				</div>
 				<div id='tomorrow' class='collapse in'>
 					<table class="table table-hover">
@@ -154,17 +121,19 @@
 		{% else %}
 			<div>
 				<div>
-					<button id='dropdown-tomorrow' type='button' class='btn' data-toggle='collapse' data-target='#tomorrow'><span class="glyphicon glyphicon-triangle-right"></span>TOMORROW</button>
+					<button id='dropdown-tomorrow' type='button' class='btn' data-toggle='collapse' data-target='#tomorrow'>TOMORROW
+						<b class="caret"></b></button>
 				</div>
-				<div id='tomorrow' class='collapse in'>
-					<p id='no-chores'>No chores for tomorrow! <span class='glyphicon glyphicon-check'></span></p>
+				<div id='tomorrow' class='collapse'>
+					<p id='no-chores'>No chores for tomorrow</p>
 				</div>
 			</div>
 		{% endif %}
 		{% if upcoming_set %} <!-- Upcoming Chore Table -->
 			<div>
 				<div>
-					<button id='dropdown-upcoming' type='button' class='btn' data-toggle='collapse' data-target='#upcoming'><span class="glyphicon glyphicon-triangle-right"></span>UPCOMING</button>
+					<button id='dropdown-upcoming' type='button' class='btn' data-toggle='collapse' data-target='#upcoming'>UPCOMING
+						<b class="caret"></b></button>
 				</div>
 				<div id='upcoming' class='collapse in'>
 					<table class="table table-hover">
@@ -195,12 +164,14 @@
 		{% else %}
 			<div>
 				<div>
-					<button id='dropdown-upcoming' type='button' class='btn' data-toggle='collapse' data-target='#upcoming'><span class="glyphicon glyphicon-triangle-right"></span>UPCOMING</button>
+					<button id='dropdown-upcoming' type='button' class='btn' data-toggle='collapse' data-target='#upcoming'>UPCOMING 
+						<b class="caret"></b></button>
 				</div>
-				<div id='upcoming' class='collapse in'>
-					<p id='no-chores'>No upcoming chores! <span class='glyphicon glyphicon-check'></span></p>
+				<div id='upcoming' class='collapse'>
+					<p id='no-chores'>No upcoming chores</p>
 				</div>
 			</div>
 		{% endif %}
 	</div>
 </body>
+{% endblock %}
