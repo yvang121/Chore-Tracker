@@ -1,15 +1,19 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load crispy_forms_tags %}
 
 {% block navbar %}
     <ul class="nav navbar-nav navbar-right">
+        <li><a href="/accounts/login/">Login</a></li>
 {#        <li class="active"><a href="./">Static top <span class="sr-only">(current)</span></a></li>#}
-        <li><a href="../login/">Log in</a></li>
+{#        <li><a href="../navbar-fixed-top/">Fixed top</a></li>#}
     </ul>
-
 {% endblock %}
 
 {% block content %}
-<p>{% trans "You are now registered." %}</p>
-    <p> <a href="">Log in now!</a></p>
+<div class="jumbotron">
+        <h2>You are now registered.</h2>
+        <p><a href="/accounts/login/">Login to Chore Tracker! </a></p>
+    </div>
+
 {% endblock %}

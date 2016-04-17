@@ -10,9 +10,9 @@
             <form method='POST' action=''>
                 {% csrf_token %}
                 <label>House name</label></br>
-                <input type='text' name='house_name' default='None'/></br>
+                <input type='text' name='house_name' value='{{house.house_name}}' /></br>
                 <label>Zip code</label></br>
-                <input type='text' name='zip_code'/></br>
+                <input type='text' name='zip_code' value='{{house.zip_code}}'/></br>
                 <div class='save'>
                     <input type='submit' class = "btn btn-success pull-left" value='Save'/>
                 </div>

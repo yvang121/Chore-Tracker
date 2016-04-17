@@ -14,24 +14,7 @@ from house.models import House
 
 # Registration
 def home(request):
-	title = 'Welcome'
-	form = LogInForm(request.POST or None)
-	context = {
-		"title": title,
-		"form": form
-	}
-
-	if form.is_valid():
-		instance = form.save(commit=False)
-		username = form.cleaned_data.get("username")
-		if not username:
-			username = "New full name"
-		instance.full_name = username
-		instance.save()
-		context = {
-			"title": "Thank you",
-		}
-	return render(request, "chore_app/home.html", context)
+	return render(request, "chore_app/home.html")
 
 @login_required()
 def index(request, house_id):
