@@ -31,8 +31,7 @@ def addHouse(request):
             zip_code = form.cleaned_data['zip_code']
             post = House.house_manager.create(house_name=house_name, zip_code=zip_code)
             return HttpResponseRedirect('/house/')
-    context = {'form': form,
-    }
+    context = {'form': form}
     return render(request, 'house/addHouse.html', context)
 
 @login_required()
@@ -44,11 +43,12 @@ def deleteHouse(request, house_id):
 def editHouse(request, house_id):
     house = get_object_or_404(House, pk=house_id)
     if request.method == 'POST':
-        if 'house_name' in request.POST and request.POST['house_name'] != '':
+        if 'house_name' in request.POST:
             house.house_name = request.POST['house_name'].title()
-        if 'zip_code' in request.POST and request.POST['zip_code'] != '':
+        if 'zip_code' in request.POST:
             house.zip_code = request.POST['zip_code'].title()
         house.save()
         return HttpResponseRedirect('/house')
-    return render(request, 'house/editHouse.html')
+    context = {'house': house}
+    return render(request, 'house/editHouse.html', context)
 
