@@ -14,5 +14,4 @@ Skip steps as needed if you know you've already completed them i.e. already have
 4. Install the datetime widget for Django by executing the command: `pip install django-datetime-widget`.
 5. Install modules for the registration page by executing the command: `pip install django-registration-redux`.
 6. Install form modules by executing the command: `pip install --upgrade django-crispy-forms`.
-7. Clone this repository somewhere on your local hard drive and change directory into `~/chore-tracker/chore_tracker` and execute the command: `python manage.py runserver` which will, as the API says, run the server. Now open up a web browser and go over to the localhost url: `127.0.0.1:8000/chore_app/`.
-
+7. Clone this repository somewhere on your local hard drive and change directory into `~/chore-tracker/chore_tracker` and execute the command: `python manage.py runserver` which will, as the API says, run the server. Now open up a web browser and go over to the localhost url: `127.0.0.1:8000`.
