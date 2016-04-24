@@ -12,9 +12,16 @@
 	<div>
 		<h2>Houses:</h2>
 	</div>
-	{{ login.username }}
+	
 	{% if houses %}
 		<div>
+			<!--This div below id for the search bar -->
+    		<div>
+    			<form id="searchform" method='GET' action='' class="searchbutton">
+		            <input id="searchfield" type='text' name='q' placeholder='Search Houses' value = '{{request.GET.q}}'/>		
+		            <input type='submit' value='Search'/>           
+		        </form>
+    		</div>
 		    <ul>
 		    {% for house in houses %}
 		    	<div>
