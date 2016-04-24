@@ -9,6 +9,10 @@ a {
 	text-align: left;
 }
 
+label {
+    margin-top: 20px;
+}
+
 ul {
 	list-style: square;
 }
