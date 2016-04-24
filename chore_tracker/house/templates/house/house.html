@@ -3,41 +3,43 @@
 {% block content %}
 <title>House</title>
 <body>
-	<div id='add-house'>
-		<a href="{% url 'house:addHouse' %}" class="btn btn-primary" role="button">Add House</a>
-	</div>
-	<div>
-		<h1>Select or Add a House</h1>
-	</div>
-	<div>
-		<h2>Houses:</h2>
-	</div>
-	{{ login.username }}
-	{% if houses %}
-		<div>
-		    <ul>
-		    {% for house in houses %}
-		    	<div>
-		    		<li>
-		    			<a href="{% url 'chore_app:index' house.id %}" class='house-name'>{{ house.house_name }}</a>
-		        		<a href="{% url 'house:editHouse' house.id %}" class="btn btn-info" id='edit-del-btn'><span class="glyphicon glyphicon-pencil"></span></a>
-		        		<a href="{% url 'house:deleteHouse' house.id %}" class="btn btn-danger" onclick='clicked(event)' id='edit-del-btn'>
-		        			<script>
-		        				function clicked(e) {
-		        					if(!confirm('Are you sure you want to delete this house?')) {
-		        						e.preventDefault();
-		        					}
-		        				}
-		        			</script>
-		        			<span class="glyphicon glyphicon-trash"></span>
-		        		</a>
-		    		</li>
-		    	<div>
-		    {% endfor %}
-		    </ul>
+	<div class="col-sm-12">
+		<div id='add-house'>
+			<a href="{% url 'house:addHouse' %}" class="btn btn-primary" role="button">Add House</a>
 		</div>
-	{% else %}
-	    <p>No names are available.</p>
-	{% endif %}
+		<div>
+			<h1>Select or Add a House</h1>
+		</div>
+		<div>
+			<h2>Houses:</h2>
+		</div>
+		{{ login.username }}
+		{% if houses %}
+			<div>
+			    <ul>
+			    {% for house in houses %}
+			    	<div>
+			    		<li>
+			    			<a href="{% url 'chore_app:index' house.id %}" class='house-name'>{{ house.house_name }}</a>
+			        		<a href="{% url 'house:editHouse' house.id %}" class="btn btn-info" id='edit-del-btn'><span class="glyphicon glyphicon-pencil"></span></a>
+			        		<a href="{% url 'house:deleteHouse' house.id %}" class="btn btn-danger" onclick='clicked(event)' id='edit-del-btn'>
+			        			<script>
+			        				function clicked(e) {
+			        					if(!confirm('Are you sure you want to delete this house?')) {
+			        						e.preventDefault();
+			        					}
+			        				}
+			        			</script>
+			        			<span class="glyphicon glyphicon-trash"></span>
+			        		</a>
+			    		</li>
+			    	<div>
+			    {% endfor %}
+			    </ul>
+			</div>
+		{% else %}
+		    <p>No names are available.</p>
+		{% endif %}
+	</div>
 </body>
 {% endblock %}
