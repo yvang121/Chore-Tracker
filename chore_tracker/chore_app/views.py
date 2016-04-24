@@ -7,7 +7,7 @@ from django.utils import timezone
 from datetime import timedelta
 import datetime
 from django.contrib.auth.views import password_reset_confirm
-from .forms import ChoreForm, HousemateForm, LogInForm, SignUpForm
+from .forms import ChoreForm, HousemateForm
 from .models import Housemate, Chore
 from house.models import House
 
