@@ -12,7 +12,6 @@ chore title and selecting a date and time. (All are currently required)
 '''
 
 class ChoreForm(forms.Form):
-
 	class Meta:
 		model = Chore
 		fields = [
@@ -31,7 +30,6 @@ class ChoreForm(forms.Form):
 	}
 
 	chore_title = forms.CharField(max_length = 200)
-
 
 
 	due_date = forms.DateTimeField(widget=DateTimeWidget(bootstrap_version=3, options=dateTimeOptions),
