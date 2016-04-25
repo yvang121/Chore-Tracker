@@ -7,21 +7,18 @@
 		<a href="{% url 'house:addHouse' %}" class="btn btn-primary" role="button">Add House</a>
 	</div>
 	<div>
-		<h1>Select or Add a House</h1>
+		<h1>Search or Add a House</h1>
 	</div>
 	<div>
-		<h2>Houses:</h2>
-	</div>
+    	<form id="searchform" method='GET' action='' class="searchbutton">
+		    <input id="searchfield" type='text' name='q' placeholder='Search Houses' value = '{{request.GET.q}}'/>		
+		    <input type='submit' value='Search'/>           
+		</form>
+   	</div>
 	
 	{% if houses %}
 		<div>
 			<!--This div below id for the search bar -->
-    		<div>
-    			<form id="searchform" method='GET' action='' class="searchbutton">
-		            <input id="searchfield" type='text' name='q' placeholder='Search Houses' value = '{{request.GET.q}}'/>		
-		            <input type='submit' value='Search'/>           
-		        </form>
-    		</div>
 		    <ul>
 		    {% for house in houses %}
 		    	<div>
@@ -44,7 +41,7 @@
 		    </ul>
 		</div>
 	{% else %}
-	    <p>No names are available.</p>
+	    <p>No houses were found.</p>
 	{% endif %}
 </body>
 {% endblock %}

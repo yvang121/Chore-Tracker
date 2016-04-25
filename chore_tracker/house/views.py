@@ -8,18 +8,18 @@ from datetime import timedelta
 from .forms import HouseForm
 from .models import House
 
+@login_required()
+def houseView(request):
 
-
-# Create your views here.
-
-class HouseView(generic.ListView):
-	template_name = 'house/house.html'
-	model = House
-	context_object_name = 'houses'
-
-	def get_queryset(self):
-		'''Return the most recent by last name'''
-		return House.house_manager.order_by('house_name')
+    house_list = House.house_manager.order_by('house_name')
+    #Search Bar
+    query = request.GET.get("q")
+    if query:
+        house_list = house_list.filter(house_name__icontains=query)
+        context = {'houses': house_list}
+    else: 
+        context = {}
+    return render(request, 'house/house.html', context)
 
 @login_required()
 def addHouse(request):
