@@ -3,16 +3,18 @@
 {% block content %}
 <title>New Housemate</title>
 <body>
-	<h1>New Housemate</h1> 
-	<form method='post' action=''>
-		{% csrf_token %}		
-		{{ form.as_p }}
-		<div class='save'>
-			<input type='submit' class="btn btn-success pull-left" value='Add Housemate'/>
-		</div>
-		<div class='cancel'>
-			<a href="{% url 'chore_app:index' house.id %}" class="btn btn-danger" role="button">Cancel</a>
-		</div>
-	</form>
+    <div class="col-sm-4">
+		<h1>New Housemate</h1> 
+		<form method='post' action=''>
+			{% csrf_token %}		
+			{{ form.as_p }}
+			<div class='save'>
+				<input type='submit' class="btn btn-success pull-left" value='Add Housemate'/>
+			</div>
+			<div class='cancel'>
+				<a href="{% url 'chore_app:index' house.id %}" class="btn btn-danger" role="button">Cancel</a>
+			</div>
+		</form>
+	</div>
 </body>
 {% endblock %}

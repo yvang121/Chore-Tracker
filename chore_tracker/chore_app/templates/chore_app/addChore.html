@@ -7,15 +7,17 @@
 	<div class="add">
 		<h1>New Chore</h1>
 	</div> 
-	<form method='POST' action=''>
-		{% csrf_token %}
-		{{ form.as_p }}
-		<div class='save'>
-			<input type='submit' class = "btn btn-success pull-left" value='Add Chore'/>
-		</div>
-		<div class='cancel'>
-			<a href="{% url 'chore_app:detail' house.id housemate.id %}" class="btn btn-danger" role="button">Cancel</a>
-		</div>
-	</form>
+	<div class="col-sm-3">
+		<form method='POST' action=''>
+			{% csrf_token %}
+			{{ form.as_p }}
+			<div class='save'>
+				<input type='submit' class = "btn btn-success pull-left" value='Add Chore'/>
+			</div>
+			<div class='cancel'>
+				<a href="{% url 'chore_app:detail' house.id housemate.id %}" class="btn btn-danger" role="button">Cancel</a>
+			</div>
+		</form>
+	</div>
 </body>
 {% endblock %}

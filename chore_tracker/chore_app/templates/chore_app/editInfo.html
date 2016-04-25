@@ -3,21 +3,23 @@
 {% block content %}
 <title>Edit Housemate</title>
 <body>
-	<h1>Edit Housemate</h1> 
-	<form method='POST' action=''>
-		{% csrf_token %}
-		<label>First name</label></br> 
-		<input type='text' name='first_name' value='{{ housemate.first_name }}'/></br>
-		<label>Last name</label></br>
-		<input type='text' name='last_name' value='{{ housemate.last_name }}'/></br>
-		<label>Email</label></br>
-		<input type='text' name='email' value='{{ housemate.email }}'/></br>
-		<div class='save'>
-			<input type='submit' class = "btn btn-success pull-left" value='Save'/>
-		</div>
-		<div class="cancel">
-			<a href="{% url 'chore_app:index' house.id %}" class="btn btn-danger" role="button">Cancel</a>
-		</div>
-	</form>
+	<div class="col-sm-4" >
+		<h1>Edit Housemate</h1> 
+		<form method='POST' action=''>
+			{% csrf_token %}
+			<label>First name</label></br> 
+			<input type='text' name='first_name' value='{{ housemate.first_name }}'/></br>
+			<label>Last name</label></br>
+			<input type='text' name='last_name' value='{{ housemate.last_name }}'/></br>
+			<label>Email</label></br>
+			<input type='text' name='email' value='{{ housemate.email }}'/></br>
+			<div class='save'>
+				<input type='submit' class = "btn btn-success pull-left" value='Save'/>
+			</div>
+			<div class="cancel">
+				<a href="{% url 'chore_app:index' house.id %}" class="btn btn-danger" role="button">Cancel</a>
+			</div>
+		</form>
+	</div>
 </body>
 {% endblock %}

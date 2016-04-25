@@ -9,6 +9,10 @@ a {
 	text-align: left;
 }
 
+label {
+    margin-top: 20px;
+}
+
 ul {
 	list-style: square;
 }
@@ -70,6 +74,7 @@ input[type='submit'] {
     float: right;
     margin-bottom: 10;
     margin-right: 5;
+    margin-top: 30
 }
 
 #add-house {
