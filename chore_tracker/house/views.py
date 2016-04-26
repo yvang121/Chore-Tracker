@@ -16,9 +16,7 @@ def houseView(request):
     query = request.GET.get("q")
     if query:
         house_list = house_list.filter(house_name__icontains=query)
-        context = {'houses': house_list}
-    else: 
-        context = {}
+    context = {'houses': house_list}
     return render(request, 'house/house.html', context)
 
 @login_required()
