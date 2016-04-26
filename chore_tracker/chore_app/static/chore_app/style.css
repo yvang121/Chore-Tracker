@@ -73,15 +73,15 @@ input[type='submit'] {
 #add-housemate {
     float: right;
     margin-bottom: 10;
-    margin-right: 5;
-    margin-top: 30;
+    margin-right: 10;
+    margin-top: 20;
 }
 
 #add-house {
     float: right;
     margin-bottom: 10;
     margin-top: 20;
-    margin-right: 5;
+    margin-right: 10;
 }
 
 a.housemate-name {
@@ -95,6 +95,13 @@ a.house-name {
     font-size: 30;
     font-family: 'Open sans', 'Segoe UI', 'Calibri';
     font-weight: 300;
+}
+
+a.house-name-heading {
+    font-size: 50;
+    font-family: Cambria ;
+    font-weight: 300;
+    color: #0D3B63;
 }
 
 #edit-del-btn {
