@@ -8,7 +8,7 @@
     		<a href="{% url 'chore_app:addHousemate' house.id %}" class="btn btn-primary" role="button">Add Housemate</a>
     	</div>
     	<div>
-    		<h1>{{ house }}</h1>
+    	   <a href="{% url 'house:editHouse' house.id %}" class='house-name-heading'>{{ house}}</a>
     	</div>
         {% if house.housemate_set.all %}
     	<div>
