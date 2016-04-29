@@ -25,6 +25,7 @@ class Housemate(models.Model):
 
 	full_name = property(__str__)
 
+	# Housemates sorted alphabetically by last name.
 	class Meta:
 		ordering = ['last_name']
 
@@ -42,5 +43,6 @@ class Chore(models.Model):
 	def __str__(self):
 		return self.chore_title
 
+	# Chores sorted by due date chronologically.
 	class Meta:
 		ordering = ['due_date']

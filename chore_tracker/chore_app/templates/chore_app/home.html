@@ -4,22 +4,20 @@
 
 {% block navbar %}
     <ul class="nav navbar-nav navbar-right">
-{#        <li class="active"><a href="./">Static top <span class="sr-only">(current)</span></a></li>#}
-        {% if request.user.is_authenticated %}
-            <li><a href="../accounts/logout/">Log out</a> </li>
-        {% else %}
-            <li><a href="../accounts/login/">Login</a></li>
-            <li><a href="../accounts/register/">Register</a></li>
-        {% endif %}
+{#        <li class="active"><a href="./">Static top <span class="sr-only">(current)</span></a></li>#}        
     </ul>
 
 {% endblock %}
 
 {% block content %}
     <!-- Main component for a primary marketing message or call to action -->
-    <div class="jumbotron">
-        <h1>Welcome to the Chore Tracker!</h1>
-        <p>Keep track of all house hold chores with the Chore Tracker web application!</p>
+    <div class="col-xs-12">
+	    <div class="jumbotron"> <center>
+	        <h1>Welcome to the Chore Tracker!</h1>
+	        <p>Keep track of all house hold chores with the Chore Tracker web application!</p>
+	        <p><a href="/accounts/login/">Login to Chore Tracker </a></p>
+	        <p><a href="/accounts/register/"> Register </a></p>
+	    </center></div>
     </div>
 
 {% endblock %}
