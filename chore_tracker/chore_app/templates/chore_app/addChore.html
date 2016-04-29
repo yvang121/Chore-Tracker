@@ -15,7 +15,7 @@
 				<input type='submit' class = "btn btn-success pull-left" value='Add Chore'/>
 			</div>
 			<div class='cancel'>
-				<a href="{% url 'chore_app:detail' house.id housemate.id %}" class="btn btn-danger" role="button">Cancel</a>
+				<a href="{% url 'chore_app:choreSummary' house.id housemate.id %}" class="btn btn-danger" role="button">Cancel</a>
 			</div>
 		</form>
 	</div>

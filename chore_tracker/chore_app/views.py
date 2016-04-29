@@ -27,7 +27,7 @@ def houseSummary(request, house_id):
 	return render(request, 'chore_app/houseSummary.html', context)
 
 @login_required()
-def detail(request, house_id, housemate_id):
+def choreSummary(request, house_id, housemate_id):
 	'''Renders an HTML page to view the details for a housemate given a housemate ID.'''
 	house = get_object_or_404(House, pk=house_id)
 	housemate = get_object_or_404(Housemate, pk = housemate_id)
@@ -60,7 +60,7 @@ def detail(request, house_id, housemate_id):
 	'upcoming_set': upcoming_set, 
 	'house': house,
 	}
-	return render(request, 'chore_app/detail.html', context)
+	return render(request, 'chore_app/choreSummary.html', context)
 
 @login_required()
 def addChore(request, house_id, housemate_id):
@@ -78,7 +78,7 @@ def addChore(request, house_id, housemate_id):
 			chore_title = form.cleaned_data['chore_title']
 			due_date = form.cleaned_data['due_date']
 			post = Chore.chore_manager.create(chore_title=chore_title, due_date=due_date, assigned_to=assigned_to)
-			return HttpResponseRedirect(reverse('chore_app:detail', args=[house_id, housemate_id]))
+			return HttpResponseRedirect(reverse('chore_app:choreSummary', args=[house_id, housemate_id]))
 
 	context = {
     'form': form,
@@ -115,10 +115,10 @@ def deleteChore(request, house_id, housemate_id, chore_id):
 	house = get_object_or_404(House, pk=house_id)
 	housemate = get_object_or_404(Housemate, pk=housemate_id)
 	instance = housemate.chore_set.filter(pk=chore_id).delete()
-	return HttpResponseRedirect(reverse('chore_app:detail', args=[house_id, housemate_id]))
+	return HttpResponseRedirect(reverse('chore_app:choreSummary', args=[house_id, housemate_id]))
 
 @login_required()
-def editInfo(request, house_id, housemate_id):
+def editHousemate(request, house_id, housemate_id):
 	'''Takes an Http request, and a housemate id to edit housemate info.'''
 	house = get_object_or_404(House, pk=house_id)
 	housemate = get_object_or_404(Housemate, pk=housemate_id)
@@ -136,7 +136,7 @@ def editInfo(request, house_id, housemate_id):
 	'housemate': housemate,
 	'house': house,
 	}
-	return render(request, 'chore_app/editInfo.html', context)
+	return render(request, 'chore_app/editHousemate.html', context)
 
 @login_required()
 def deleteHousemate(request, house_id, housemate_id):
