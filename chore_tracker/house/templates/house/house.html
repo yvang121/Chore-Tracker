@@ -25,7 +25,7 @@
 			{% for house in houses %}
 			<div>
 				<li>
-					<a href="{% url 'chore_app:index' house.id %}" class='house-name'>{{ house.house_name }}</a>
+					<a href="{% url 'chore_app:houseSummary' house.id %}" class='house-name'>{{ house.house_name }}</a>
 				</li>
 				<div>
 					{% endfor %}
