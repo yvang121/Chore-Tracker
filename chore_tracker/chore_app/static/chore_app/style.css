@@ -98,18 +98,11 @@ input[type='submit'] {
     color: #0D3B63;
 }
 
-a.housemate-name {
-    font-size: 30; 
-    font-family: Cambria; 
-    color: rgb(11, 0, 128); 
-    font-weight: 300;
-}
-
-a.house-name {
+a.house-name, a.housemate-name {
     font-size: 30;
     font-family: Cambria;
     font-weight: 300;
-    color: rgb(11, 0, 128); 
+    color: rgb(0, 115, 153); 
 }
 
 #edit-del-btn {
