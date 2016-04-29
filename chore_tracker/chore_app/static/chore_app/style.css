@@ -101,14 +101,15 @@ input[type='submit'] {
 a.housemate-name {
     font-size: 30; 
     font-family: Cambria; 
-    color: green; 
+    color: rgb(11, 0, 128); 
     font-weight: 300;
 }
 
 a.house-name {
     font-size: 30;
-    font-family: 'Open sans', 'Segoe UI', 'Calibri';
+    font-family: Cambria;
     font-weight: 300;
+    color: rgb(11, 0, 128); 
 }
 
 #edit-del-btn {
