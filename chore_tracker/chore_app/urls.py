@@ -7,7 +7,7 @@ app_name = 'chore_app'
 
 urlpatterns = [
 	url(r'^$',views.home,name='home'),
-	url(r'^house/(?P<house_id>[0-9]+)/$', views.index, name='index'),
+	url(r'^house/(?P<house_id>[0-9]+)/$', views.houseSummary, name='houseSummary'),
 	url(r'^house/(?P<house_id>[0-9]+)/add_housemate$', views.addHousemate, name='addHousemate'),
 	url(r'^house/(?P<house_id>[0-9]+)/housemate/(?P<housemate_id>[0-9]+)/summary$', views.detail, name='detail'),
 	url(r'^house/(?P<house_id>[0-9]+)/housemate/(?P<housemate_id>[0-9]+)/add_chore$', views.addChore, name='addChore'),

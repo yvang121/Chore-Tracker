@@ -46,7 +46,7 @@ def editHouse(request, house_id):
         if 'zip_code' in request.POST:
             house.zip_code = request.POST['zip_code'].title()
         house.save()
-        return HttpResponseRedirect(reverse('chore_app:index', args=[house_id]))
+        return HttpResponseRedirect(reverse('chore_app:houseSummary', args=[house_id]))
     context = {'house': house}
     return render(request, 'house/editHouse.html', context)
 

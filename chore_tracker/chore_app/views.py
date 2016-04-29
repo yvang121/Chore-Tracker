@@ -16,7 +16,7 @@ def home(request):
 	return render(request, "chore_app/home.html")
 
 @login_required()
-def index(request, house_id):
+def houseSummary(request, house_id):
 	'''Renders the HTML page that views the housemates for a given house.'''
 	house = get_object_or_404(House, pk=house_id)
 	housemates = house.housemate_set.all()
@@ -24,7 +24,7 @@ def index(request, house_id):
 	'housmates': housemates, 
 	'house': house,
 	}
-	return render(request, 'chore_app/index.html', context)
+	return render(request, 'chore_app/houseSummary.html', context)
 
 @login_required()
 def detail(request, house_id, housemate_id):
@@ -102,7 +102,7 @@ def addHousemate(request, house_id):
 			last_name = form.cleaned_data['last_name'].title()
 			email = form.cleaned_data['email']
 			post = Housemate.person.create(house=house, first_name=first_name, last_name=last_name, email=email)
-			return HttpResponseRedirect(reverse('chore_app:index', args=[house_id]))
+			return HttpResponseRedirect(reverse('chore_app:houseSummary', args=[house_id]))
 	context = {
 	'form': form, 
 	'house': house
@@ -131,7 +131,7 @@ def editInfo(request, house_id, housemate_id):
 		if 'email' in request.POST:
 			housemate.email = request.POST['email']
 		housemate.save()
-		return HttpResponseRedirect(reverse('chore_app:index', args=[house_id]))
+		return HttpResponseRedirect(reverse('chore_app:houseSummary', args=[house_id]))
 	context = {
 	'housemate': housemate,
 	'house': house,
@@ -147,4 +147,4 @@ def deleteHousemate(request, house_id, housemate_id):
 	'house': house,
 	'housemate': housemate,
 	}
-	return HttpResponseRedirect(reverse('chore_app:index', args=[house_id]))
+	return HttpResponseRedirect(reverse('chore_app:houseSummary', args=[house_id]))
