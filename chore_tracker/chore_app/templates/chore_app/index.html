@@ -18,8 +18,8 @@
     	    <ul>
     	    {% for housemate in house.housemate_set.all %} <!-- If names exist in database, list them out in for loop -->
             	<li>
-            		<a class='housemate-name' href="{% url 'chore_app:detail' house.id housemate.id %}">{{ housemate.full_name }}</a>
-            		<a href="{% url 'chore_app:editInfo' house.id housemate.id %}" class="btn btn-info" id='edit-del-btn'> <span class="glyphicon glyphicon-pencil"></span></a>
+            		<a class='housemate-name' href="{% url 'chore_app:choreSummary' house.id housemate.id %}">{{ housemate.full_name }}</a>
+            		<a href="{% url 'chore_app:editHousemate' house.id housemate.id %}" class="btn btn-info" id='edit-del-btn'> <span class="glyphicon glyphicon-pencil"></span></a>
             		<a href="{% url 'chore_app:deleteHousemate' house.id housemate.id %}" class="btn btn-danger" onclick='clicked(event)' id='edit-del-btn'>
                         <script>
                             function clicked(e) {
