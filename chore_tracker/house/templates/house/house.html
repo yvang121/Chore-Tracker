@@ -3,37 +3,37 @@
 {% block content %}
 <title>House</title>
 <body>
-	<div id='add-house'>
+
+<div class="col-xs-12 col-sm-12 col-md-12">
+	<div style="float:right" id='add-house'>
 		<a href="{% url 'house:addHouse' %}" class="btn btn-primary" role="button">Add House</a>
 	</div>
-	<div class="col-sm-6">
-		
-		<div>
-			<h1>Search or Add a House</h1>
-		</div>
-		<div>
-	    	<form id="searchform" method='GET' action='' class="searchbutton">
-			    <input id="searchfield" type='text' name='q' placeholder='Search Houses' value = '{{request.GET.q}}'/>	
-			    <button type="submit" class = "btn btn-info"><span class="glyphicon glyphicon-search"></span></button>       
-			</form>
-	   	</div>
-		
-		{% if houses %}
-			<div>
-				<!--This div below id for the search bar -->
-			    <ul>
-			    {% for house in houses %}
-			    	<div>
-			    		<li>
-			    			<a href="{% url 'chore_app:index' house.id %}" class='house-name'>{{ house.house_name }}</a>
-			    		</li>
-			    	<div>
-			    {% endfor %}
-			    </ul>
-			</div>
-		{% else %}
-		    <p>No houses were found.</p>
-		{% endif %}
+	<div>
+		<h1>Search or Add a House</h1>
 	</div>
+	<div>
+		<form id="searchform" method='GET' action='' class="searchbutton">
+			<input id="searchfield" type='text' name='q' placeholder='Search Houses' value = '{{request.GET.q}}'/>
+			<button type="submit" class = "btn btn-info"><span class="glyphicon glyphicon-search"></span></button>
+		</form>
+	</div>
+
+	{% if houses %}
+	<div>
+		<!--This div below id for the search bar -->
+		<ul>
+			{% for house in houses %}
+			<div>
+				<li>
+					<a href="{% url 'chore_app:index' house.id %}" class='house-name'>{{ house.house_name }}</a>
+				</li>
+				<div>
+					{% endfor %}
+		</ul>
+	</div>
+	{% else %}
+	<p>No houses were found.</p>
+	{% endif %}
+</div>
 </body>
 {% endblock %}
