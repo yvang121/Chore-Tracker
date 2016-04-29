@@ -1,5 +1,6 @@
 {% extends "navbar.html" %}
 {% load staticfiles %}
+{% load crispy_forms_tags %}
 {% block content %}
 {{ form.media }}
 <title>New Chore</title>
@@ -10,7 +11,7 @@
 	<div class="col-sm-3">
 		<form method='POST' action=''>
 			{% csrf_token %}
-			{{ form.as_p }}
+			{{ form|crispy }}
 			<div class='save'>
 				<input type='submit' class = "btn btn-success pull-left" value='Add Chore'/>
 			</div>

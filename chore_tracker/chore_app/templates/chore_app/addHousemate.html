@@ -1,5 +1,6 @@
 {% extends "navbar.html" %}
 {% load staticfiles %}
+{% load crispy_forms_tags %}
 {% block content %}
 <title>New Housemate</title>
 <body>
@@ -7,7 +8,7 @@
 		<h1>New Housemate</h1> 
 		<form method='post' action=''>
 			{% csrf_token %}		
-			{{ form.as_p }}
+			{{ form|crispy }}
 			<div class='save'>
 				<input type='submit' class="btn btn-success pull-left" value='Add Housemate'/>
 			</div>
