@@ -2,7 +2,10 @@ from django import forms
 
 from .models import House
 
+
 class HouseForm(forms.Form):
+	''' Defines the form to show up on the page of adding a house
+		Requires house name and zip code '''
 	class Meta:
 		model = House
 		fields = [
