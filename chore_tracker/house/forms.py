@@ -2,10 +2,11 @@ from django import forms
 
 from .models import House
 
-
+''' House form that allows users to add a house by typing in a
+house name/address and ZIP code. (All are currently required)  
+'''
 class HouseForm(forms.Form):
-	''' Defines the form to show up on the page of adding a house
-		Requires house name and zip code '''
+	
 	class Meta:
 		model = House
 		fields = [

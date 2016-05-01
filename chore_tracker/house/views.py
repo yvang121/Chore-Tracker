@@ -10,7 +10,7 @@ from .models import House
 
 @login_required()
 def houseView(request):
-    ''' Renders an HTML page to view all houses'''
+    ''' Renders an HTML page to view all houses.'''
     house_list = House.house_manager.order_by('house_name')
     #Search Bar
     query = request.GET.get("q")
@@ -21,7 +21,7 @@ def houseView(request):
 
 @login_required()
 def addHouse(request):
-    '''Renders an HTML page to add a house'''
+    '''Renders an HTML page to add a house.'''
     form = HouseForm(request.POST or None)
     if request.method == 'POST':
         form = HouseForm(request.POST)
@@ -35,13 +35,13 @@ def addHouse(request):
 
 @login_required()
 def deleteHouse(request, house_id):
-    '''Renders an HTML page to delete a house given a house id'''
+    '''Renders an HTML page to delete a house given a house ID'''
     house = get_object_or_404(House, pk=house_id).delete()
     return HttpResponseRedirect('/house')
 
 @login_required()
 def editHouse(request, house_id):
-    '''Renders an HTML page to edit information of a house given a house id'''
+    '''Renders an HTML page to edit information of a house given a house ID'''
     house = get_object_or_404(House, pk=house_id)
     if request.method == 'POST':
         if 'house_name' in request.POST:
